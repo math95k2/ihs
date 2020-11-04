@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="da">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fag</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <header>
+        <div id="header_logo"></div>
+
+        <nav id="header_menu" class="hidden">
+            <a href="fag.html">Fag</a>
+            <a href="rejser.html">Rejser</a>
+            <a href="kurser.html">Kurser</a>
+            <a href="priser.html">Priser</a>
+            <a href="tilmeld.html">Tilmeld</a>
+            <a href="kontakt.html">Kontakt</a>
+            <a href="om.html">Om</a>
+
+        </nav>
+
+        <div class="menu_btn">
+            <div class="menu_btn_burger"></div>
+        </div>
+    </header>
+
+    <main>
+        <section>
+            <div class="section_wrapper">
+                <h1></h1>
+                <img src="" alt="">
+                <div id=text_content></div>
+            </div>
+        </section>
+
+        <section>
+            <div id="fag_container">
+
+
+
+
+
+            </div>
+        </section>
+
+
+
+
+
+
+        <template id="temp_kategori">
+            <article class="click_box">
+                <div class="fag_box">
+                    <div class="fag_kategori">
+                        <h2 class="fag_kategori_tekst"></h2>
+                    </div>
+                    <div class="fold_ud_knap"></div>
+                </div>
+                <div class="alle_fag_container"></div>
+            </article>
+        </template>
+
+
+        <template id="temp_fag">
+            <img src="" alt="" class="fag_billede">
+            <h3 class="fag_navn"></h3>
+            <p class="fag_periode"></p>
+
+        </template>
+
+
+    </main>
+
+
+
+    <footer></footer>
+
+
+
+
+    <script>
+        //Burgermenu
+        const menuBtn = document.querySelector(".menu_btn");
+        const menuNav = document.querySelector("#header_menu");
+        let menuOpen = false;
+
+        menuBtn.addEventListener("click", () => {
+            if (menuOpen == false) {
+                menuBtn.classList.add("open");
+                menuNav.classList.remove("hidden");
+                menuOpen = true;
+            } else {
+                menuBtn.classList.remove("open");
+                menuNav.classList.add("hidden");
+                menuOpen = false;
+            }
+        });
+
+
+
+
+
+
+
+
+
+        //main content fra wp-pages
+
+        document.addEventListener("DOMContentLoaded", getThePage);
+
+        async function getThePage() {
+            let page;
+            let url = "http://mathaeusss.dk/kea/2_semester/ihs/wordpress/wp-json/wp/v2/pages/65";
+            let jsonData = await fetch(url);
+            page = await jsonData.json();
+
+            document.querySelector("h1").textContent = page.title.rendered;
+            document.querySelector("#text_content").innerHTML = page.content.rendered;
+            hentDynContent();
+        };
+
+
+
+
+
+
+
+
+
+        //Kategorier trækkes ud og indsættes
+        async function hentDynContent() {
+            let kategorier;
+            let url = "http://mathaeusss.dk/kea/2_semester/ihs/wordpress/wp-json/wp/v2/fag_kategori";
+            let container = document.querySelector("#fag_container");
+            const temp = document.querySelector("#temp_kategori");
+
+            let jsonData = await fetch(url);
+            kategorier = await jsonData.json();
+
+
+            kategorier.forEach(kategori => {
+                let klon = temp.cloneNode(true).content;
+                klon.querySelector(".fag_kategori_tekst").textContent = kategori.name;
+                klon.querySelector(".fag_box").dataset.id = kategori.id;
+
+                container.appendChild(klon);
+
+                clickFunction();
+            })
+        };
+
+
+
+        function clickFunction() {
+            document.querySelectorAll(".fag_box").forEach((clickBox) => {
+                clickBox.addEventListener("click", hentFag);
+            })
+        };
+
+
+
+
+
+
+
+
+
+        async function hentFag() {
+
+            let fag;
+            let url = "http://mathaeusss.dk/kea/2_semester/ihs/wordpress/wp-json/wp/v2/fag?per_page=100";
+            let container = this.nextElementSibling;
+            let kategori = this.dataset.id;
+            const temp = document.querySelector("#temp_fag");
+            let jsonData = await fetch(url);
+            fag = await jsonData.json();
+
+
+            console.log(fag.fag_kategori);
+            console.log(kategori);
+
+            fag.forEach(fag => {
+                if (fag.fag_kategori == kategori) {
+                    let klon = temp.cloneNode(true).content;
+                    klon.querySelector(".fag_navn").textContent = fag.overskrift;
+                    klon.querySelector(".fag_periode").textContent = fag.periode;
+
+                    container.appendChild(klon);
+                }
+            })
+
+            this.parentElement.classList.add("auto_height");
+
+            this.removeEventListener("click", hentFag);
+            this.addEventListener("click", toggleFag);
+        };
+
+
+
+        function toggleFag() {
+
+            this.parentElement.classList.toggle("auto_height");
+        }
+
+    </script>
+</body>
+
+</html>

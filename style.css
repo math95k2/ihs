@@ -1,0 +1,210 @@
+* {
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+}
+
+
+header {
+    width: 100%;
+    height: 65px;
+    border-bottom: 0.3px solid grey;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 5vw;
+}
+
+
+#header_logo {
+    background-image: url(imgs/logo.svg);
+    height: 55px;
+    width: 80.3px;
+}
+
+#header_menu {
+    position: absolute;
+    background-color: white;
+    top: 65px;
+    width: 100%;
+    padding: 0 0 100% 0;
+    transition: 0.3s;
+    transform-origin: top left;
+    left: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    z-index: 100;
+}
+
+.hidden {
+    transform: translateX(100%);
+}
+
+
+
+
+
+
+
+
+
+
+/************ BURGER OG ANIMATION *******/
+
+.menu_btn {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 55px;
+    height: 55px;
+    cursor: pointer;
+    transition: all .5s ease-in-out;
+}
+
+.menu_btn_burger {
+    width: 40px;
+    height: 5px;
+    background: black;
+    transition: all .2s ease-in-out;
+}
+
+.menu_btn_burger::before,
+.menu_btn_burger::after {
+    content: "";
+    position: absolute;
+    width: 40px;
+    height: 5px;
+    background: black;
+    transition: all .3s ease-in-out;
+}
+
+.menu_btn_burger::before {
+    transform: translateY(-12px);
+}
+
+.menu_btn_burger::after {
+    transform: translateY(12px);
+}
+
+
+
+.menu_btn.open .menu_btn_burger {
+    background: transparent;
+}
+
+.menu_btn.open .menu_btn_burger::before {
+    transform: rotate(45deg);
+}
+
+.menu_btn.open .menu_btn_burger::after {
+    transform: rotate(-45deg);
+}
+
+
+
+
+
+
+
+
+
+
+section {
+    width: 90vw;
+    margin: 0 auto;
+}
+
+
+
+
+
+
+
+
+
+
+
+/********************** INDEX ***************/
+
+#forside_logo {
+    width: 90vw;
+    height: 61.64vw;
+    margin: 20px auto 70px auto;
+    background-image: url(imgs/logo.svg);
+}
+
+#forside_wrapper div {
+    width: 90vw;
+    height: 30vw;
+    margin: 10px auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    /**** slet senere ****/
+    background: grey;
+}
+
+#forside_wrapper a {
+    font-family: sans-serif;
+    font-weight: 700;
+    font-size: 2.5rem;
+    color: white;
+    text-decoration: none;
+}
+
+
+#forside_hoejskole {}
+
+#forside_ugekurser {}
+
+#forside_erhverv {}
+
+
+
+
+
+
+
+
+
+
+
+
+/************ Fag  *********/
+
+#fag_container article {
+    background: ;
+    position: relative;
+    overflow: hidden;
+    height: auto;
+
+    /***** samme højde som .fag_box***/
+    height: 25vw;
+    margin: 20px 0;
+}
+
+.fag_box {
+    background-color: antiquewhite;
+    width: 90vw;
+    height: 25vw;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.fag_box:hover {
+    cursor: pointer;
+}
+
+
+fag_kategori_tekst {}
+
+.alle_fag_i_kat {}
+
+#fag_container article.auto_height {
+    height: auto;
+}
