@@ -10,8 +10,6 @@ async function getMenu() {
     let menuData = await fetch(menuUrl);
     menu = await menuData.text();
 
-    console.log(menu);
-
     document.querySelector("header").innerHTML = menu;
     constructMenu();
 
@@ -25,6 +23,8 @@ function constructMenu() {
     const menuNav = document.querySelector("#header_menu");
     let menuOpen = false;
 
+
+
     menuBtn.addEventListener("click", () => {
         if (menuOpen == false) {
             menuBtn.classList.add("open");
@@ -34,6 +34,9 @@ function constructMenu() {
             menuBtn.classList.remove("open");
             menuNav.classList.add("hidden");
             menuOpen = false;
+
+
+
         }
     })
 };

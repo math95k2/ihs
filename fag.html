@@ -75,6 +75,10 @@
             document.querySelector("h1").textContent = page.title.rendered;
             document.querySelector("#text_content").innerHTML = page.content.rendered;
             hentDynContent();
+
+
+
+
         };
 
 
@@ -100,6 +104,13 @@
                 let klon = temp.cloneNode(true).content;
                 klon.querySelector(".fag_kategori_tekst").textContent = kategori.name;
                 klon.querySelector(".fag_box").dataset.id = kategori.id;
+
+                //slettes senere
+                let billeder = document.querySelectorAll("img");
+                billeder.forEach(billede => {
+                    billede.src = "imgs/placeholder.jpg";
+                });
+                //slettes snere
 
                 container.appendChild(klon);
 
@@ -143,6 +154,13 @@
                     klon.querySelector(".fag_navn").textContent = fag.overskrift;
                     klon.querySelector(".fag_periode").textContent = fag.periode;
 
+                    //slettes senere
+                    let billeder = document.querySelectorAll("img");
+                    billeder.forEach(billede => {
+                        billede.src = "imgs/placeholder.jpg";
+                    });
+                    //slettes snere
+
                     container.appendChild(klon);
                 }
             })
@@ -151,6 +169,12 @@
 
             this.removeEventListener("click", hentFag);
             this.addEventListener("click", toggleFag);
+
+
+
+
+
+
         };
 
 
@@ -159,8 +183,7 @@
 
             this.parentElement.classList.toggle("auto_height");
         }
-
     </script>
-</body>
 
-</html>
+
+</body></html>

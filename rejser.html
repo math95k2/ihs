@@ -19,7 +19,7 @@
 
     <main>
         <section>
-            <div id="billede"></div>
+            <img src="" alt="">
             <h1></h1>
             <div id="text_content">
 
@@ -63,6 +63,15 @@
             console.log(page);
             document.querySelector("h1").textContent = page.title.rendered;
             document.querySelector("#text_content").innerHTML = page.content.rendered;
+
+            //slettes senere
+            let billeder = document.querySelectorAll("img");
+            billeder.forEach(billede => {
+                billede.src = "imgs/placeholder.jpg";
+            });
+            //slettes snere
+
+
             hentDynContent();
         };
 
@@ -81,6 +90,17 @@
             rejser.forEach(rejse => {
                 let klon = temp.cloneNode(true).content;
                 klon.querySelector(".dyn_text").textContent = rejse.title.rendered;
+
+
+
+                //slettes senere
+                let billeder = document.querySelectorAll("img");
+                billeder.forEach(billede => {
+                    billede.src = "imgs/placeholder.jpg";
+                });
+                //slettes snere
+
+
 
                 //klon.querySelector("article").addEventListener("click", () => visDetaljer(titel));
                 container.appendChild(klon);

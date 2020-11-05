@@ -66,6 +66,15 @@
             console.log(page);
             document.querySelector("h1").textContent = page.title.rendered;
             document.querySelector("#text_content").innerHTML = page.content.rendered;
+
+            //slettes senere
+            let billeder = document.querySelectorAll("img");
+            billeder.forEach(billede => {
+                billede.src = "imgs/placeholder.jpg";
+            });
+            //slettes snere
+
+
             hentDynContent();
         };
 
@@ -87,12 +96,19 @@
                 klon.querySelector(".dyn_stilling").textContent = bestyrelse.titel;
                 klon.querySelector(".dyn_beskrivelse").textContent = bestyrelse.link;
 
+
+                //slettes senere
+                let billeder = document.querySelectorAll("img");
+                billeder.forEach(billede => {
+                    billede.src = "imgs/placeholder.jpg";
+                });
+                //slettes snere
+
+
+
                 //klon.querySelector("article").addEventListener("click", () => visDetaljer(titel));
                 container.appendChild(klon);
             })
         };
-
     </script>
-</body>
-
-</html>
+</body></html>
