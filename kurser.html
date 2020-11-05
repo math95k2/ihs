@@ -41,6 +41,19 @@
 
             </div>
         </section>
+
+
+        <section>
+            <div id="dyn_content"></div>
+        </section>
+
+        <template>
+            <article>
+                <img src="" alt="" class="dyn_img">
+                <p class="dyn_text">
+                </p>
+            </article>
+        </template>
     </main>
 
 
@@ -90,6 +103,32 @@
 
             document.querySelector("h1").textContent = page.title.rendered;
             document.querySelector("#text_content").innerHTML = page.content.rendered;
-        }
+            hentDynContent();
+        };
+
+
+
+
+
+
+
+        //Udvalgs-view fra Pods
+        async function hentDynContent() {
+            let kurser;
+            let url = "http://mathaeusss.dk/kea/2_semester/ihs/wordpress/wp-json/wp/v2/kurser";
+            let container = document.querySelector("#dyn_content");
+            const temp = document.querySelector("template");
+
+            let jsonData = await fetch(url);
+            kurser = await jsonData.json();
+
+            kurser.forEach(kurse => {
+                let klon = temp.cloneNode(true).content;
+                klon.querySelector(".dyn_text").textContent = kurse.title.rendered;
+
+                //klon.querySelector("article").addEventListener("click", () => visDetaljer(titel));
+                container.appendChild(klon);
+            })
+        };
     </script>
 </body></html>
