@@ -177,7 +177,7 @@ section {
 /************ Fag  *********/
 
 #fag_container article {
-    background: ;
+    background: #FF7A48;
     position: relative;
     overflow: hidden;
     height: auto;
@@ -188,7 +188,6 @@ section {
 }
 
 .fag_box {
-    background-color: antiquewhite;
     width: 90vw;
     height: 25vw;
     display: flex;
