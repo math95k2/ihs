@@ -106,24 +106,28 @@
 
 
 
-        //Udvalgs-view fra Pods
-        async function hentDynContent() {
-            let faqs;
-            let url = "http://mathaeusss.dk/kea/2_semester/ihs/wordpress/wp-json/wp/v2/faq?per_page=100";
-            let container = document.querySelector("#dyn_content");
-            const temp = document.querySelector("template");
+        //Det er indtil videre ikke nødvendigt at fetche noget data fra pods på denne side!
 
-            let jsonData = await fetch(url);
-            faqs = await jsonData.json();
 
-            faqs.forEach(faq => {
-                let klon = temp.cloneNode(true).content;
-                klon.querySelector(".dyn_spg").textContent = faq.spoergsml;
-                klon.querySelector(".dyn_svar").textContent = faq.svar;
 
-                //klon.querySelector("article").addEventListener("click", () => visDetaljer(titel));
-                container.appendChild(klon);
-            })
-        };
+        //        //Udvalgs-view fra Pods
+        //        async function hentDynContent() {
+        //            let faqs;
+        //            let url = "http://mathaeusss.dk/kea/2_semester/ihs/wordpress/wp-json/wp/v2/faq?per_page=100";
+        //            let container = document.querySelector("#dyn_content");
+        //            const temp = document.querySelector("template");
+        //
+        //            let jsonData = await fetch(url);
+        //            faqs = await jsonData.json();
+        //
+        //            faqs.forEach(faq => {
+        //                let klon = temp.cloneNode(true).content;
+        //                klon.querySelector(".dyn_spg").textContent = faq.spoergsml;
+        //                klon.querySelector(".dyn_svar").textContent = faq.svar;
+        //
+        //                //klon.querySelector("article").addEventListener("click", () => visDetaljer(titel));
+        //                container.appendChild(klon);
+        //            })
+        //        };
     </script>
 </body></html>
