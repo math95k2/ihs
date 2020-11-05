@@ -119,14 +119,11 @@
 
             rejser.forEach(rejse => {
                 let klon = temp.cloneNode(true).content;
-                klon.querySelector(".dyn_text").textContent = rejse.tekst;
+                klon.querySelector(".dyn_text").textContent = rejse.title.rendered;
 
                 //klon.querySelector("article").addEventListener("click", () => visDetaljer(titel));
                 container.appendChild(klon);
             })
         };
-
     </script>
-</body>
-
-</html>
+</body></html>
