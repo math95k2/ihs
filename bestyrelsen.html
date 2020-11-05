@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="da">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bestyrelse</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <header>
+        <div id="header_logo"></div>
+
+        <nav id="header_menu" class="hidden">
+            <a href="fag.html">Fag</a>
+            <a href="rejser.html">Rejser</a>
+            <a href="kurser.html">Kurser</a>
+            <a href="priser.html">Priser</a>
+            <a href="tilmeld.html">Tilmeld</a>
+            <a href="kontakt.html">Kontakt</a>
+            <a href="om.html">Om</a>
+
+        </nav>
+
+        <div class="menu_btn">
+            <div class="menu_btn_burger"></div>
+        </div>
+    </header>
+
+
+
+
+
+
+    <main>
+        <section>
+            <div id="billede"></div>
+            <h1></h1>
+            <div id="text_content">
+
+            </div>
+        </section>
+
+
+
+        <section>
+            <div id="dyn_content"></div>
+        </section>
+
+        <template>
+            <article>
+                <img src="" alt="" class="dyn_img">
+                <p class="dyn_navn"> </p>
+                <p class="dyn_stilling">
+                </p>
+                <p class="dyn_beskrivelse">
+                </p>
+            </article>
+        </template>
+    </main>
+
+
+    <footer></footer>
+
+
+
+
+
+
+
+    <script>
+        //burger menu
+        const menuBtn = document.querySelector(".menu_btn");
+        const menuNav = document.querySelector("#header_menu");
+        let menuOpen = false;
+
+        menuBtn.addEventListener("click", () => {
+            if (menuOpen == false) {
+                menuBtn.classList.add("open");
+                menuNav.classList.remove("hidden");
+                menuOpen = true;
+            } else {
+                menuBtn.classList.remove("open");
+                menuNav.classList.add("hidden");
+                menuOpen = false;
+            }
+        });
+
+
+
+
+
+
+
+        //main content fra wp-pages
+
+        let page;
+        document.addEventListener("DOMContentLoaded", getThePage);
+
+        async function getThePage() {
+            let url = "http://mathaeusss.dk/kea/2_semester/ihs/wordpress/wp-json/wp/v2/pages/257";
+            let jsonData = await fetch(url);
+            page = await jsonData.json();
+            console.log(page);
+            document.querySelector("h1").textContent = page.title.rendered;
+            document.querySelector("#text_content").innerHTML = page.content.rendered;
+            hentDynContent();
+        };
+
+
+
+        //Udvalgs-view fra Pods
+        async function hentDynContent() {
+            let bestyrelser;
+            let url = "http://mathaeusss.dk/kea/2_semester/ihs/wordpress/wp-json/wp/v2/bestyrelsen?per_page=100";
+            let container = document.querySelector("#dyn_content");
+            const temp = document.querySelector("template");
+
+            let jsonData = await fetch(url);
+            bestyrelser = await jsonData.json();
+
+            bestyrelser.forEach(bestyrelse => {
+                let klon = temp.cloneNode(true).content;
+                klon.querySelector(".dyn_navn").textContent = bestyrelse.navn;
+                klon.querySelector(".dyn_stilling").textContent = bestyrelse.titel;
+                klon.querySelector(".dyn_beskrivelse").textContent = bestyrelse.link;
+
+                //klon.querySelector("article").addEventListener("click", () => visDetaljer(titel));
+                container.appendChild(klon);
+            })
+        };
+    </script>
+</body></html>
