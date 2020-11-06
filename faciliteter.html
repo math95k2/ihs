@@ -136,19 +136,19 @@
 
         async function hentFacilitet() {
 
-            let facilitet;
+            let faciliteter;
             let url = "http://mathaeusss.dk/kea/2_semester/ihs/wordpress/wp-json/wp/v2/facilitet?per_page=100";
             let container = this.nextElementSibling;
             let kategori = this.dataset.id;
             const temp = document.querySelector("#temp_facilitet");
             let jsonData = await fetch(url);
-            facilitet = await jsonData.json();
+            faciliteter = await jsonData.json();
 
 
-            console.log(facilitet.facilitet_kategori);
+            console.log(faciliteter.facilitet_kategori);
             console.log(kategori);
 
-            facilitet.forEach(facilitet => {
+            faciliteter.forEach(facilitet => {
                 if (facilitet.faciliteter_kategorier == kategori) {
                     let klon = temp.cloneNode(true).content;
                     klon.querySelector(".facilitet_navn").textContent = facilitet.overskrift;
