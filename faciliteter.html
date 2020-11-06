@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="da">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Faciliteter</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <header>
+    </header>
+
+    <main>
+        <section>
+            <div class="section_wrapper">
+                <h1></h1>
+                <img src="" alt="">
+                <div id=text_content></div>
+            </div>
+        </section>
+
+        <section>
+            <div id="facilitet_container">
+            </div>
+        </section>
+
+
+
+
+
+
+        <template id="temp_kategori">
+            <article class="click_box">
+                <div class="facilitet_box">
+                    <div class="facilitet_kategori">
+                        <h2 class="facilitet_kategori_tekst"></h2>
+                    </div>
+                    <div class="fold_ud_knap"></div>
+                </div>
+                <div class="alle_faciliteter_container"></div>
+            </article>
+        </template>
+
+
+        <template id="temp_facilitet">
+            <img src="" alt="" class="facilitet_billede">
+            <h3 class="facilitet_navn"></h3>
+            <p class="facilitet_beskrivelse"></p>
+
+        </template>
+
+
+    </main>
+
+
+
+    <footer></footer>
+
+
+
+    <script src="script.js"></script>
+    <script>
+        //main content fra wp-pages
+
+        document.addEventListener("DOMContentLoaded", getThePage);
+
+        async function getThePage() {
+            let page;
+            let url = "http://mathaeusss.dk/kea/2_semester/ihs/wordpress/wp-json/wp/v2/pages/317";
+            let jsonData = await fetch(url);
+            page = await jsonData.json();
+
+            document.querySelector("h1").textContent = page.title.rendered;
+            document.querySelector("#text_content").innerHTML = page.content.rendered;
+            hentDynContent();
+
+
+
+
+        };
+
+
+
+
+
+
+
+
+
+        //Kategorier trækkes ud og indsættes
+        async function hentDynContent() {
+            let kategorier;
+            let url = "http://mathaeusss.dk/kea/2_semester/ihs/wordpress/wp-json/wp/v2/faciliteter_kategorier";
+            let container = document.querySelector("#facilitet_container");
+            const temp = document.querySelector("#temp_kategori");
+
+            let jsonData = await fetch(url);
+            kategorier = await jsonData.json();
+
+
+            kategorier.forEach(kategori => {
+                let klon = temp.cloneNode(true).content;
+                klon.querySelector(".facilitet_kategori_tekst").textContent = kategori.name;
+                klon.querySelector(".facilitet_box").dataset.id = kategori.id;
+
+                //slettes senere
+                let billeder = document.querySelectorAll("img");
+                billeder.forEach(billede => {
+                    billede.src = "imgs/placeholder.jpg";
+                });
+                //slettes snere
+
+                container.appendChild(klon);
+
+                clickFunction();
+            })
+        };
+
+
+
+        function clickFunction() {
+            document.querySelectorAll(".facilitet_box").forEach((clickBox) => {
+                clickBox.addEventListener("click", hentFacilitet);
+            })
+        };
+
+
+
+
+
+
+
+
+
+        async function hentFacilitet() {
+
+            let facilitet;
+            let url = "http://mathaeusss.dk/kea/2_semester/ihs/wordpress/wp-json/wp/v2/facilitet?per_page=100";
+            let container = this.nextElementSibling;
+            let kategori = this.dataset.id;
+            const temp = document.querySelector("#temp_facilitet");
+            let jsonData = await fetch(url);
+            facilitet = await jsonData.json();
+
+
+            console.log(facilitet.facilitet_kategori);
+            console.log(kategori);
+
+            facilitet.forEach(facilitet => {
+                if (facilitet.faciliteter_kategorier == kategori) {
+                    let klon = temp.cloneNode(true).content;
+                    klon.querySelector(".facilitet_navn").textContent = facilitet.overskrift;
+                    klon.querySelector(".facilitet_beskrivelse").innerHTML = facilitet.content.rendered;
+
+                    //slettes senere
+                    let billeder = document.querySelectorAll("img");
+                    billeder.forEach(billede => {
+                        billede.src = "imgs/placeholder.jpg";
+                    });
+                    //slettes snere
+
+                    container.appendChild(klon);
+                }
+            })
+
+            this.parentElement.classList.add("auto_height");
+
+            this.removeEventListener("click", hentFacilitet);
+            this.addEventListener("click", toggleFacilitet);
+
+
+
+
+
+
+        };
+
+
+
+        function toggleFacilitet() {
+
+            this.parentElement.classList.toggle("auto_height");
+        }
+    </script>
+
+
+</body></html>

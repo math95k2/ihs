@@ -207,3 +207,37 @@ fag_kategori_tekst {}
 #fag_container article.auto_height {
     height: auto;
 }
+
+/************ Faciliteter  *********/
+
+#facilitet_container article {
+    background: #FF7A48;
+    position: relative;
+    overflow: hidden;
+    height: auto;
+
+    /***** samme højde som .fag_box***/
+    height: 25vw;
+    margin: 20px 0;
+}
+
+.facilitet_box {
+    width: 90vw;
+    height: 25vw;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.facilitet_box:hover {
+    cursor: pointer;
+}
+
+
+facilitet_kategori_tekst {}
+
+.alle_fag_i_kat {}
+
+#facilitet_container article.auto_height {
+    height: auto;
+}
