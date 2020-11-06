@@ -10,22 +10,6 @@
 
 <body>
     <header>
-        <div id="header_logo"></div>
-
-        <nav id="header_menu" class="hidden">
-            <a href="fag.html">Fag</a>
-            <a href="rejser.html">Rejser</a>
-            <a href="kurser.html">Kurser</a>
-            <a href="priser.html">Priser</a>
-            <a href="tilmeld.html">Tilmeld</a>
-            <a href="kontakt.html">Kontakt</a>
-            <a href="om.html">Om</a>
-
-        </nav>
-
-        <div class="menu_btn">
-            <div class="menu_btn_burger"></div>
-        </div>
     </header>
 
     <main>
@@ -39,11 +23,6 @@
 
         <section>
             <div id="fag_container">
-
-
-
-
-
             </div>
         </section>
 
@@ -81,33 +60,8 @@
 
 
 
-
+    <script src="script.js"></script>
     <script>
-        //Burgermenu
-        const menuBtn = document.querySelector(".menu_btn");
-        const menuNav = document.querySelector("#header_menu");
-        let menuOpen = false;
-
-        menuBtn.addEventListener("click", () => {
-            if (menuOpen == false) {
-                menuBtn.classList.add("open");
-                menuNav.classList.remove("hidden");
-                menuOpen = true;
-            } else {
-                menuBtn.classList.remove("open");
-                menuNav.classList.add("hidden");
-                menuOpen = false;
-            }
-        });
-
-
-
-
-
-
-
-
-
         //main content fra wp-pages
 
         document.addEventListener("DOMContentLoaded", getThePage);
@@ -121,6 +75,10 @@
             document.querySelector("h1").textContent = page.title.rendered;
             document.querySelector("#text_content").innerHTML = page.content.rendered;
             hentDynContent();
+
+
+
+
         };
 
 
@@ -146,6 +104,13 @@
                 let klon = temp.cloneNode(true).content;
                 klon.querySelector(".fag_kategori_tekst").textContent = kategori.name;
                 klon.querySelector(".fag_box").dataset.id = kategori.id;
+
+                //slettes senere
+                let billeder = document.querySelectorAll("img");
+                billeder.forEach(billede => {
+                    billede.src = "imgs/placeholder.jpg";
+                });
+                //slettes snere
 
                 container.appendChild(klon);
 
@@ -189,6 +154,13 @@
                     klon.querySelector(".fag_navn").textContent = fag.overskrift;
                     klon.querySelector(".fag_periode").textContent = fag.periode;
 
+                    //slettes senere
+                    let billeder = document.querySelectorAll("img");
+                    billeder.forEach(billede => {
+                        billede.src = "imgs/placeholder.jpg";
+                    });
+                    //slettes snere
+
                     container.appendChild(klon);
                 }
             })
@@ -197,6 +169,12 @@
 
             this.removeEventListener("click", hentFag);
             this.addEventListener("click", toggleFag);
+
+
+
+
+
+
         };
 
 
@@ -205,8 +183,7 @@
 
             this.parentElement.classList.toggle("auto_height");
         }
-
     </script>
-</body>
 
-</html>
+
+</body></html>
