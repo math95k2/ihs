@@ -176,7 +176,7 @@ section {
 
 /************ Fag  *********/
 
-#fag_container article {
+.main_container {
     background: #FF7A48;
     position: relative;
     overflow: hidden;
@@ -187,7 +187,7 @@ section {
     margin: 20px 0;
 }
 
-.fag_box {
+.dyn_btn {
     width: 90vw;
     height: 25vw;
     display: flex;
@@ -195,16 +195,13 @@ section {
     align-items: center;
 }
 
-.fag_box:hover {
+.dyn_btn:hover {
     cursor: pointer;
 }
 
 
-fag_kategori_tekst {}
 
-.alle_fag_i_kat {}
-
-#fag_container article.auto_height {
+.main_container.auto_height {
     height: auto;
 }
 

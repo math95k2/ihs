@@ -4,7 +4,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Faciliteter</title>
+    <title>Fag</title>
     <link rel="stylesheet" href="style.css">
 </head>
 
@@ -22,7 +22,7 @@
         </section>
 
         <section>
-            <div id="facilitet_container">
+            <div id="dyn_container">
             </div>
         </section>
 
@@ -32,22 +32,22 @@
 
 
         <template id="temp_kategori">
-            <article class="click_box">
-                <div class="facilitet_box">
-                    <div class="facilitet_kategori">
-                        <h2 class="facilitet_kategori_tekst"></h2>
-                    </div>
+            <article class="main_container">
+                <div class="dyn_btn">
+                    <h2 class="kategori_tekst"></h2>
                     <div class="fold_ud_knap"></div>
                 </div>
-                <div class="alle_faciliteter_container"></div>
+                <div class="dyn_indhold_container"></div>
             </article>
         </template>
 
 
-        <template id="temp_facilitet">
-            <img src="" alt="" class="facilitet_billede">
-            <h3 class="facilitet_navn"></h3>
-            <p class="facilitet_beskrivelse"></p>
+        <template id="temp_indhold">
+            <div class="indhold_container">
+                <img src="" alt="" class="indhold_billede">
+                <h3 class="indhold_navn"></h3>
+                <p class="indhold_periode"></p>
+            </div>
 
         </template>
 
@@ -74,11 +74,7 @@
 
             document.querySelector("h1").textContent = page.title.rendered;
             document.querySelector("#text_content").innerHTML = page.content.rendered;
-            hentDynContent();
-
-
-
-
+            hentDynKategorier();
         };
 
 
@@ -90,10 +86,10 @@
 
 
         //Kategorier trækkes ud og indsættes
-        async function hentDynContent() {
+        async function hentDynKategorier() {
             let kategorier;
             let url = "http://mathaeusss.dk/kea/2_semester/ihs/wordpress/wp-json/wp/v2/faciliteter_kategorier";
-            let container = document.querySelector("#facilitet_container");
+            let container = document.querySelector("#dyn_container");
             const temp = document.querySelector("#temp_kategori");
 
             let jsonData = await fetch(url);
@@ -102,8 +98,10 @@
 
             kategorier.forEach(kategori => {
                 let klon = temp.cloneNode(true).content;
-                klon.querySelector(".facilitet_kategori_tekst").textContent = kategori.name;
-                klon.querySelector(".facilitet_box").dataset.id = kategori.id;
+                klon.querySelector(".kategori_tekst").textContent = kategori.name;
+                klon.querySelector(".dyn_btn").dataset.id = kategori.id;
+
+
 
                 //slettes senere
                 let billeder = document.querySelectorAll("img");
@@ -113,17 +111,8 @@
                 //slettes snere
 
                 container.appendChild(klon);
-
-                clickFunction();
             })
-        };
-
-
-
-        function clickFunction() {
-            document.querySelectorAll(".facilitet_box").forEach((clickBox) => {
-                clickBox.addEventListener("click", hentFacilitet);
-            })
+            hentDynContent();
         };
 
 
@@ -134,50 +123,72 @@
 
 
 
-        async function hentFacilitet() {
+        async function hentDynContent() {
 
-            let faciliteter;
+            let pods;
             let url = "http://mathaeusss.dk/kea/2_semester/ihs/wordpress/wp-json/wp/v2/facilitet?per_page=100";
-            let container = this.nextElementSibling;
-            let kategori = this.dataset.id;
-            const temp = document.querySelector("#temp_facilitet");
+            let overall_container = document.querySelectorAll(".main_container");
+            const temp = document.querySelector("#temp_indhold");
             let jsonData = await fetch(url);
-            faciliteter = await jsonData.json();
+            pods = await jsonData.json();
+
+            console.log(pods);
 
 
-            console.log(faciliteter.facilitet_kategori);
-            console.log(kategori);
+            overall_container.forEach(kasse => {
+                let container = kasse.lastElementChild;
+                let kategori = kasse.firstElementChild.dataset.id;
 
-            faciliteter.forEach(facilitet => {
-                if (facilitet.faciliteter_kategorier == kategori) {
-                    let klon = temp.cloneNode(true).content;
-                    klon.querySelector(".facilitet_navn").textContent = facilitet.overskrift;
-                    klon.querySelector(".facilitet_beskrivelse").innerHTML = facilitet.content.rendered;
 
-                    //slettes senere
-                    let billeder = document.querySelectorAll("img");
-                    billeder.forEach(billede => {
-                        billede.src = "imgs/placeholder.jpg";
-                    });
-                    //slettes snere
+                pods.forEach(pod => {
+                    console.log(pod);
+                    if (pod.faciliteter_kategorier == kategori) {
+                        let klon = temp.cloneNode(true).content;
+                        klon.querySelector(".indhold_navn").textContent = pod.overskrift;
+                        klon.querySelector(".indhold_periode").textContent = pod.periode;
 
-                    container.appendChild(klon);
-                }
+
+                        klon.querySelector(".indhold_container").addEventListener("click", function() {
+                            singleViewClick(pod.id)
+                        });
+
+
+
+                        //slettes senere
+                        let billeder = document.querySelectorAll("img");
+                        billeder.forEach(billede => {
+                            billede.src = "imgs/placeholder.jpg";
+                        });
+                        //slettes snere
+
+                        container.appendChild(klon);
+                    }
+                })
+
             })
 
-            this.parentElement.classList.add("auto_height");
-
-            this.removeEventListener("click", hentFacilitet);
-            this.addEventListener("click", toggleFacilitet);
-
-
+            boxClicked();
         };
 
 
 
-        function toggleFacilitet() {
+        function singleViewClick(id) {
+            window.location.href = "faciliteter_view.html?id=" + id;
+        }
 
+
+
+        function boxClicked() {
+            document.querySelectorAll(".dyn_btn").forEach((clickBox) => {
+                clickBox.addEventListener("click", toggleContent);
+            })
+        };
+
+
+
+        function toggleContent() {
             this.parentElement.classList.toggle("auto_height");
+            console.log("yes")
         }
     </script>
 

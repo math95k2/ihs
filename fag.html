@@ -22,7 +22,7 @@
         </section>
 
         <section>
-            <div id="fag_container">
+            <div id="dyn_container">
             </div>
         </section>
 
@@ -32,23 +32,21 @@
 
 
         <template id="temp_kategori">
-            <article class="click_box">
-                <div class="fag_box">
-                    <div class="fag_kategori">
-                        <h2 class="fag_kategori_tekst"></h2>
-                    </div>
+            <article class="main_container">
+                <div class="dyn_btn">
+                    <h2 class="kategori_tekst"></h2>
                     <div class="fold_ud_knap"></div>
                 </div>
-                <div class="alle_fag_container"></div>
+                <div class="dyn_indhold_container"></div>
             </article>
         </template>
 
 
-        <template id="temp_fag">
+        <template id="temp_indhold">
             <div class="indhold_container">
-                <img src="" alt="" class="fag_billede">
-                <h3 class="fag_navn"></h3>
-                <p class="fag_periode"></p>
+                <img src="" alt="" class="indhold_billede">
+                <h3 class="indhold_navn"></h3>
+                <p class="indhold_periode"></p>
             </div>
 
         </template>
@@ -76,7 +74,7 @@
 
             document.querySelector("h1").textContent = page.title.rendered;
             document.querySelector("#text_content").innerHTML = page.content.rendered;
-            hentDynContent();
+            hentDynKategorier();
 
 
 
@@ -92,10 +90,10 @@
 
 
         //Kategorier trækkes ud og indsættes
-        async function hentDynContent() {
+        async function hentDynKategorier() {
             let kategorier;
             let url = "http://mathaeusss.dk/kea/2_semester/ihs/wordpress/wp-json/wp/v2/fag_kategori";
-            let container = document.querySelector("#fag_container");
+            let container = document.querySelector("#dyn_container");
             const temp = document.querySelector("#temp_kategori");
 
             let jsonData = await fetch(url);
@@ -104,8 +102,8 @@
 
             kategorier.forEach(kategori => {
                 let klon = temp.cloneNode(true).content;
-                klon.querySelector(".fag_kategori_tekst").textContent = kategori.name;
-                klon.querySelector(".fag_box").dataset.id = kategori.id;
+                klon.querySelector(".kategori_tekst").textContent = kategori.name;
+                klon.querySelector(".dyn_btn").dataset.id = kategori.id;
 
 
 
@@ -118,7 +116,7 @@
 
                 container.appendChild(klon);
             })
-            hentFag();
+            hentDynContent();
         };
 
 
@@ -129,14 +127,14 @@
 
 
 
-        async function hentFag() {
+        async function hentDynContent() {
 
-            let fag;
+            let pods;
             let url = "http://mathaeusss.dk/kea/2_semester/ihs/wordpress/wp-json/wp/v2/fag?per_page=100";
-            let overall_container = document.querySelectorAll(".click_box");
-            const temp = document.querySelector("#temp_fag");
+            let overall_container = document.querySelectorAll(".main_container");
+            const temp = document.querySelector("#temp_indhold");
             let jsonData = await fetch(url);
-            fag = await jsonData.json();
+            pods = await jsonData.json();
 
 
             overall_container.forEach(kasse => {
@@ -144,13 +142,15 @@
                 let kategori = kasse.firstElementChild.dataset.id;
 
 
-                fag.forEach(fag => {
-                    if (fag.fag_kategori == kategori) {
+                pods.forEach(pod => {
+                    if (pod.fag_kategori == kategori) {
                         let klon = temp.cloneNode(true).content;
-                        klon.querySelector(".fag_navn").textContent = fag.overskrift;
-                        klon.querySelector(".fag_periode").textContent = fag.periode;
+                        klon.querySelector(".indhold_navn").textContent = pod.overskrift;
+                        klon.querySelector(".indhold_periode").textContent = pod.periode;
+
+
                         klon.querySelector(".indhold_container").addEventListener("click", function() {
-                            singleViewClick(fag.id)
+                            singleViewClick(pod.id)
                         });
 
 
@@ -174,21 +174,20 @@
 
 
         function singleViewClick(id) {
-            console.log("jajaja", id);
             window.location.href = "fag_view.html?id=" + id;
         }
 
 
 
         function boxClicked() {
-            document.querySelectorAll(".fag_box").forEach((clickBox) => {
-                clickBox.addEventListener("click", toggleFag);
+            document.querySelectorAll(".dyn_btn").forEach((clickBox) => {
+                clickBox.addEventListener("click", toggleContent);
             })
         };
 
 
 
-        function toggleFag() {
+        function toggleContent() {
             this.parentElement.classList.toggle("auto_height");
             console.log("yes")
         }
