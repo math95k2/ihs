@@ -43,6 +43,7 @@
         document.addEventListener("DOMContentLoaded", getThePage);
 
         async function getThePage() {
+
             let url = "http://mathaeusss.dk/kea/2_semester/ihs/wordpress/wp-json/wp/v2/pages/59";
             let jsonData = await fetch(url);
             page = await jsonData.json();

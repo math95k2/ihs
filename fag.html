@@ -45,9 +45,11 @@
 
 
         <template id="temp_fag">
-            <img src="" alt="" class="fag_billede">
-            <h3 class="fag_navn"></h3>
-            <p class="fag_periode"></p>
+            <div class="indhold_container">
+                <img src="" alt="" class="fag_billede">
+                <h3 class="fag_navn"></h3>
+                <p class="fag_periode"></p>
+            </div>
 
         </template>
 
@@ -147,6 +149,9 @@
                         let klon = temp.cloneNode(true).content;
                         klon.querySelector(".fag_navn").textContent = fag.overskrift;
                         klon.querySelector(".fag_periode").textContent = fag.periode;
+                        klon.querySelector(".indhold_container").addEventListener("click", function() {
+                            singleViewClick(fag.id)
+                        });
 
 
 
@@ -165,6 +170,13 @@
 
             boxClicked();
         };
+
+
+
+        function singleViewClick(id) {
+            console.log("jajaja", id);
+            window.location.href = "fag_view.html?id=" + id;
+        }
 
 
 
