@@ -105,6 +105,8 @@
                 klon.querySelector(".fag_kategori_tekst").textContent = kategori.name;
                 klon.querySelector(".fag_box").dataset.id = kategori.id;
 
+
+
                 //slettes senere
                 let billeder = document.querySelectorAll("img");
                 billeder.forEach(billede => {
@@ -113,17 +115,8 @@
                 //slettes snere
 
                 container.appendChild(klon);
-
-                clickFunction();
             })
-        };
-
-
-
-        function clickFunction() {
-            document.querySelectorAll(".fag_box").forEach((clickBox) => {
-                clickBox.addEventListener("click", hentFag);
-            })
+            hentFag();
         };
 
 
@@ -138,50 +131,54 @@
 
             let fag;
             let url = "http://mathaeusss.dk/kea/2_semester/ihs/wordpress/wp-json/wp/v2/fag?per_page=100";
-            let container = this.nextElementSibling;
-            let kategori = this.dataset.id;
+            let overall_container = document.querySelectorAll(".click_box");
             const temp = document.querySelector("#temp_fag");
             let jsonData = await fetch(url);
             fag = await jsonData.json();
 
 
-            console.log(fag.fag_kategori);
-            console.log(kategori);
+            overall_container.forEach(kasse => {
+                let container = kasse.lastElementChild;
+                let kategori = kasse.firstElementChild.dataset.id;
 
-            fag.forEach(fag => {
-                if (fag.fag_kategori == kategori) {
-                    let klon = temp.cloneNode(true).content;
-                    klon.querySelector(".fag_navn").textContent = fag.overskrift;
-                    klon.querySelector(".fag_periode").textContent = fag.periode;
 
-                    //slettes senere
-                    let billeder = document.querySelectorAll("img");
-                    billeder.forEach(billede => {
-                        billede.src = "imgs/placeholder.jpg";
-                    });
-                    //slettes snere
+                fag.forEach(fag => {
+                    if (fag.fag_kategori == kategori) {
+                        let klon = temp.cloneNode(true).content;
+                        klon.querySelector(".fag_navn").textContent = fag.overskrift;
+                        klon.querySelector(".fag_periode").textContent = fag.periode;
 
-                    container.appendChild(klon);
-                }
+
+
+                        //slettes senere
+                        let billeder = document.querySelectorAll("img");
+                        billeder.forEach(billede => {
+                            billede.src = "imgs/placeholder.jpg";
+                        });
+                        //slettes snere
+
+                        container.appendChild(klon);
+                    }
+                })
+
             })
 
-            this.parentElement.classList.add("auto_height");
-
-            this.removeEventListener("click", hentFag);
-            this.addEventListener("click", toggleFag);
+            boxClicked();
+        };
 
 
 
-
-
-
+        function boxClicked() {
+            document.querySelectorAll(".fag_box").forEach((clickBox) => {
+                clickBox.addEventListener("click", toggleFag);
+            })
         };
 
 
 
         function toggleFag() {
-
             this.parentElement.classList.toggle("auto_height");
+            console.log("yes")
         }
     </script>
 

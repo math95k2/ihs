@@ -212,7 +212,6 @@ fag_kategori_tekst {}
 
 #facilitet_container article {
     background: #FF7A48;
-    position: relative;
     overflow: hidden;
     height: auto;
 
@@ -239,5 +238,5 @@ facilitet_kategori_tekst {}
 .alle_fag_i_kat {}
 
 #facilitet_container article.auto_height {
-    height: auto;
+    height: 40vw;
 }
