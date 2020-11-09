@@ -5,6 +5,8 @@
 }
 
 
+
+
 header {
     width: 100%;
     display: flex;
@@ -121,7 +123,15 @@ header {
 
 
 
+/************** TEKST *********/
+p {
 
+    font-family: 'Montserrat', sans-serif;
+}
+
+h1 {
+    font-family: 'Montserrat', sans-serif;
+}
 
 
 
@@ -311,4 +321,23 @@ facilitet_kategori_tekst {}
 
 #facilitet_container article.auto_height {
     height: 40vw;
+}
+
+
+#footer {
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    background-color: #DF6B4E;
+    color: #ffffff;
+}
+
+.colwrapper {
+    display: flex;
+    flex-direction: column;
+}
+
+.colwrapper > div {
+    padding: 15px;
 }
