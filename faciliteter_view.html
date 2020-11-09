@@ -4,7 +4,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Fag</title>
+    <title>Faciliteter</title>
     <link rel="stylesheet" href="style.css">
 
 
@@ -49,9 +49,12 @@
         async function getThePage() {
 
 
-            let url = "http://mathaeusss.dk/kea/2_semester/ihs/wordpress/wp-json/wp/v2/fag/" + id;
+            let url = "http://mathaeusss.dk/kea/2_semester/ihs/wordpress/wp-json/wp/v2/facilitet/" + id;
             let jsonData = await fetch(url);
             page = await jsonData.json();
+
+
+            console.log(page);
 
 
             console.log(page);
@@ -71,8 +74,5 @@
 
 
         };
-
     </script>
-</body>
-
-</html>
+</body></html>
