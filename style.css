@@ -28,6 +28,12 @@ h1 {
     font-family: 'Montserrat', sans-serif;
 }
 
+
+h3 {
+    font-family: 'Montserrat', sans-serif;
+    color: #DF6B4E;
+}
+
 li {
     font-family: 'Montserrat', sans-serif;
 }
@@ -345,43 +351,23 @@ section {
     height: auto;
 }
 
-/************ Faciliteter  *********/
 
-#facilitet_container article {
-    background: #FF7A48;
-    overflow: hidden;
-    height: auto;
 
-    /***** samme højde som .fag_box***/
-    height: 25vw;
-    margin: 20px 0;
+.indhold_container {
+    background-color: white;
+    border-radius: 3px;
+    margin: 20px 10px;
 }
 
-.facilitet_box {
-    width: 90vw;
-    height: 25vw;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+.indhold_billede {
+    border-radius: 3px 3px 0 0;
+    height: 150px;
+    object-fit: cover;
 }
 
-.facilitet_box:hover {
-    cursor: pointer;
+.indhold_tekst_container {
+    padding: 10px;
 }
-
-
-facilitet_kategori_tekst {}
-
-.alle_fag_i_kat {}
-
-#facilitet_container article.auto_height {
-    height: 40vw;
-}
-
-
-
-
-
 
 
 

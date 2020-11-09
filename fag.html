@@ -52,8 +52,10 @@
         <template id="temp_indhold">
             <div class="indhold_container">
                 <img src="" alt="" class="indhold_billede">
-                <h3 class="indhold_navn"></h3>
-                <p class="indhold_periode"></p>
+                <div class="indhold_tekst_container">
+                    <h3 class="indhold_navn"></h3>
+                    <p class="indhold_periode"></p>
+                </div>
             </div>
 
         </template>
@@ -199,7 +201,10 @@
             console.log("yes")
             this.lastElementChild.classList.toggle("pil_rotate");
         }
+
     </script>
 
 
-</body></html>
+</body>
+
+</html>
