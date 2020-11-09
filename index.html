@@ -4,38 +4,62 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Forside</title>
+    <title>Højskole</title>
     <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;700&display=swap" rel="stylesheet">
 
 
 </head>
 
 <body>
+    <header>
+    </header>
+
+
+
+
+
+
     <main>
         <section>
-            <div id="forside_logo"></div>
-
-
-            <div id="forside_wrapper">
-
-                <div id="forside_hoejskole">
-                    <a href="hoejskole.html">Hoejskole</a>
-                </div>
-
-                <div id="forside_ugekurser">
-                    <a href="#">Ugekurser</a>
-                </div>
-
-                <div id="forside_erhverv">
-                    <a href="#">Erhverv</a>
-                </div>
+            <img src="" alt="">
+            <h1></h1>
+            <div id="text_content">
 
             </div>
         </section>
     </main>
 
-    <footer>
 
-    </footer>
-    <script src=""></script>
+    <footer></footer>
+
+
+
+
+
+
+    <script src="script.js"></script>
+    <script>
+        let page;
+        document.addEventListener("DOMContentLoaded", getThePage);
+
+        async function getThePage() {
+
+            let url = "http://mathaeusss.dk/kea/2_semester/ihs/wordpress/wp-json/wp/v2/pages/59";
+            let jsonData = await fetch(url);
+            page = await jsonData.json();
+
+
+            console.log(page);
+
+            document.querySelector("h1").textContent = page.title.rendered;
+            document.querySelector("#text_content").innerHTML = page.content.rendered;
+            //slettes senere
+            let billeder = document.querySelectorAll("img");
+            billeder.forEach(billede => {
+                billede.src = "imgs/placeholder.jpg";
+            });
+            //slettes snere
+        }
+    </script>
 </body></html>
