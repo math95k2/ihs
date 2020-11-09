@@ -28,10 +28,17 @@ h1 {
     font-family: 'Montserrat', sans-serif;
 }
 
+h2 {
+    font-family: 'Montserrat', sans-serif;
+    color: #DF6B4E;
+    font-size: 2rem;
+}
+
 
 h3 {
     font-family: 'Montserrat', sans-serif;
     color: #DF6B4E;
+    font-size: 1rem;
 }
 
 li {
