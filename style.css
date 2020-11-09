@@ -42,9 +42,23 @@ header {
     transform: translateX(100%);
 }
 
+#footer {
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    background-color: #DF6B4E;
+    color: #ffffff;
+}
 
+.colwrapper {
+    display: flex;
+    flex-direction: row;
+}
 
-
+.colwrapper > div {
+    padding: 20px;
+}
 
 
 
