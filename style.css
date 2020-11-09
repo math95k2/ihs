@@ -306,8 +306,8 @@ section {
     width: 100%;
     height: 25vw;
     display: flex;
-    justify-content: space-between;
     align-items: center;
+    justify-content: space-between;
     padding: 0 10px;
 }
 
@@ -318,12 +318,14 @@ section {
 
 
 .fold_ud_knap {
-    width: 40px;
-    height: 40px;
+    width: 20px;
+    height: 20px;
+    transition: 0.5s;
+    margin-right: 20px;
 }
 
 .pil_rotate {
-    transform: rotate(-90deg);
+    transform: rotate(90deg);
 }
 
 .main_container:nth-child(odd) .fold_ud_knap {
