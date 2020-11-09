@@ -11,6 +11,15 @@ img {
 
 
 
+:root {
+    --orange: #DF6B4E;
+    --orange-dark: #AA4F39;
+    --orange-light: #EC9D5E;
+    --grey: #EDEDED;
+}
+
+
+
 
 
 
@@ -30,14 +39,14 @@ h1 {
 
 h2 {
     font-family: 'Montserrat', sans-serif;
-    color: #DF6B4E;
+    color: var(--orange);
     font-size: 2rem;
 }
 
 
 h3 {
     font-family: 'Montserrat', sans-serif;
-    color: #DF6B4E;
+    color: var(--orange);
     font-size: 1rem;
 }
 
@@ -92,7 +101,7 @@ header {
 
 #header_menu {
     position: absolute;
-    background-color: #EDEDED;
+    background-color: var(--grey);
     top: 125px;
     width: 60vw;
     height: 100vh;
@@ -113,7 +122,7 @@ header {
     text-decoration: none;
     color: black;
     padding: 10px;
-    color: #DF6B4E;
+    color: var(--orange);
     margin-left: 20px
 }
 
@@ -142,7 +151,7 @@ header {
     justify-content: space-between;
     width: 100%;
     height: 85px;
-    background-color: #DF6B4E;
+    background-color: var(--orange);
     padding: 0px 10px;
     align-items: center;
 }
@@ -154,7 +163,7 @@ header {
     height: 40px;
     display: flex;
     align-items: center;
-    background-color: #AA4F39;
+    background-color: var(--orange-dark);
     padding: 0px 10px;
 }
 
@@ -300,7 +309,7 @@ section {
 }
 
 .main_container:nth-child(odd) {
-    background: #EC9D5E;
+    background: var(--orange-light);
 }
 
 .main_container:nth-child(odd) h2 {
@@ -311,12 +320,12 @@ section {
 
 
 .main_container:nth-child(even) {
-    background: #EDEDED;
+    background: var(--grey);
 }
 
 .main_container:nth-child(even) h2 {
     font-family: 'Montserrat', sans-serif;
-    color: #DF6B4E;
+    color: var(--orange);
     font-size: 2rem;
 }
 
@@ -384,7 +393,7 @@ section {
 #footer {
 
     width: 100%;
-    background-color: #DF6B4E;
+    background-color: var(--orange);
     color: #ffffff;
 }
 
