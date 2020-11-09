@@ -23,11 +23,16 @@ header {
     background-image: url(imgs/logo.svg);
     height: 55px;
     width: 80.3px;
+    display: block;
 }
 
 #header_logo_text {
     background-image: url(imgs/logo_text.svg);
+    height: 55px;
+    width: 80.3px;
+    display: block;
 }
+
 
 
 
