@@ -12,6 +12,7 @@ async function getMenu() {
 
     document.querySelector("header").innerHTML = menu;
     constructMenu();
+    getFooter();
 
 
 }
@@ -34,9 +35,20 @@ function constructMenu() {
             menuBtn.classList.remove("open");
             menuNav.classList.add("hidden");
             menuOpen = false;
-
-
-
         }
     })
 };
+
+
+
+
+
+async function getFooter() {
+    let footer
+    let footerUrl = "footer.html";
+    let footerData = await fetch(footerUrl);
+    footer = await footerData.text();
+
+    document.querySelector("footer").innerHTML = footer;
+
+}
