@@ -269,6 +269,7 @@ section {
     color: white;
     font-size: 5rem;
     font-weight: 700;
+    word-break: break-all;
 }
 
 
