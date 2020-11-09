@@ -5,6 +5,35 @@
 }
 
 
+img {
+    width: 100%;
+}
+
+
+
+
+
+
+
+
+
+
+/************** TEKST *********/
+p {
+
+    font-family: 'Montserrat', sans-serif;
+}
+
+h1 {
+    font-family: 'Montserrat', sans-serif;
+}
+
+
+
+
+/****** HEader ************/
+
+
 
 
 header {
@@ -48,8 +77,8 @@ header {
     position: absolute;
     background-color: #EDEDED;
     top: 125px;
-    width: 100%;
-    padding: 0 0 100% 0;
+    width: 60vw;
+    height: 100vh;
     transition: 0.3s;
     transform-origin: top left;
     left: 0;
@@ -58,7 +87,7 @@ header {
     justify-content: left;
     align-items: left;
     z-index: 100;
-    margin-left: 40vw;
+    /*    margin-left: 40vw;*/
 }
 
 #header_menu a {
@@ -87,7 +116,8 @@ header {
 }
 
 .hidden {
-    transform: translateX(100%);
+    transform: translateX(-100%);
+    opacity: 0;
 }
 
 #main_menu {
@@ -123,15 +153,10 @@ header {
 
 
 
-/************** TEKST *********/
-p {
 
-    font-family: 'Montserrat', sans-serif;
-}
 
-h1 {
-    font-family: 'Montserrat', sans-serif;
-}
+
+
 
 
 
@@ -195,58 +220,41 @@ h1 {
 
 
 
+/***** page layout *****/
 
 
 section {
-    width: 90vw;
-    margin: 0 auto;
+    width: 100%;
+    padding: 0 10px;
+}
+
+#dyn_section {
+    padding: 0;
 }
 
 
-
-
-
-
-
-
-
-
-
-/********************** INDEX ***************/
-
-#forside_logo {
-    width: 90vw;
-    height: 61.64vw;
-    margin: 20px auto 70px auto;
-    background-image: url(imgs/logo.svg);
+#top_section {
+    padding: 0;
 }
 
-#forside_wrapper div {
-    width: 90vw;
-    height: 30vw;
-    margin: 10px auto;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-
-    /**** slet senere ****/
-    background: grey;
+#top_billede {
+    width: 100vw;
+    height: 40vw;
+    background-position: center;
+    background-size: cover;
+    position: relative;
 }
 
-#forside_wrapper a {
-    font-family: sans-serif;
-    font-weight: 700;
-    font-size: 2.5rem;
+#top_billede h1 {
+    position: absolute;
+    bottom: 10px;
+    left: 10px;
     color: white;
-    text-decoration: none;
+    font-size: 5rem;
+    font-weight: 700;
 }
 
 
-#forside_hoejskole {}
-
-#forside_ugekurser {}
-
-#forside_erhverv {}
 
 
 
@@ -259,31 +267,72 @@ section {
 
 
 
-/************ Fag  *********/
+
+
+
+/************ Dyn content med foldud  *********/
 
 .main_container {
-    background: #FF7A48;
     position: relative;
     overflow: hidden;
     height: auto;
 
     /***** samme højde som .fag_box***/
     height: 25vw;
-    margin: 20px 0;
+}
+
+.main_container:nth-child(odd) {
+    background: #EC9D5E;
+}
+
+.main_container:nth-child(odd) h2 {
+    font-family: 'Montserrat', sans-serif;
+    color: white;
+    font-size: 2rem;
+}
+
+
+.main_container:nth-child(even) {
+    background: #EDEDED;
+}
+
+.main_container:nth-child(even) h2 {
+    font-family: 'Montserrat', sans-serif;
+    color: #DF6B4E;
+    font-size: 2rem;
 }
 
 .dyn_btn {
-    width: 90vw;
+    width: 100%;
     height: 25vw;
     display: flex;
-    justify-content: center;
+    justify-content: space-between;
     align-items: center;
+    padding: 0 10px;
 }
+
 
 .dyn_btn:hover {
     cursor: pointer;
 }
 
+
+.fold_ud_knap {
+    width: 40px;
+    height: 40px;
+}
+
+.pil_rotate {
+    transform: rotate(-90deg);
+}
+
+.main_container:nth-child(odd) .fold_ud_knap {
+    background-image: url(imgs/pil_hvid.svg)
+}
+
+.main_container:nth-child(even) .fold_ud_knap {
+    background-image: url(imgs/pil_orange.svg)
+}
 
 
 .main_container.auto_height {
@@ -333,9 +382,7 @@ facilitet_kategori_tekst {}
 /******** Fooooter *****/
 
 #footer {
-    position: absolute;
-    left: 0;
-    bottom: 0;
+
     width: 100%;
     background-color: #DF6B4E;
     color: #ffffff;
@@ -346,6 +393,6 @@ facilitet_kategori_tekst {}
     flex-direction: column;
 }
 
-.colwrapper > div {
-    padding: 15px;
+.colwrapper div {
+    padding: 15px 10px;
 }

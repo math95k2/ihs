@@ -14,15 +14,21 @@
     </header>
 
     <main>
+
+        <section id="top_section">
+            <div id="top_billede">
+                <h1></h1>
+            </div>
+        </section>
+
         <section>
             <div class="section_wrapper">
-                <h1></h1>
                 <img src="" alt="">
                 <div id=text_content></div>
             </div>
         </section>
 
-        <section>
+        <section id="dyn_section">
             <div id="dyn_container">
             </div>
         </section>
@@ -72,9 +78,9 @@
             let url = "http://mathaeusss.dk/kea/2_semester/ihs/wordpress/wp-json/wp/v2/pages/65";
             let jsonData = await fetch(url);
             page = await jsonData.json();
-
             document.querySelector("h1").textContent = page.title.rendered;
             document.querySelector("#text_content").innerHTML = page.content.rendered;
+            document.querySelector("#top_billede").style.backgroundImage = "url(" + page.top_billede.guid + ")";
             hentDynKategorier();
 
 
@@ -191,6 +197,7 @@
         function toggleContent() {
             this.parentElement.classList.toggle("auto_height");
             console.log("yes")
+            this.lastElementChild.classList.toggle("pil_rotate");
         }
     </script>
 
