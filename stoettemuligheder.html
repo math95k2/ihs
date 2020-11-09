@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="da">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Støttemuligheder</title>
+    <link rel="stylesheet" href="style.css">
+
+
+</head>
+
+<body>
+    <header>
+    </header>
+
+
+
+
+
+    <main>
+        <section>
+            <img src="" alt="">
+            <h1></h1>
+            <div id="text_content">
+
+            </div>
+        </section>
+    </main>
+
+
+    <footer></footer>
+
+
+
+
+
+
+    <script src="script.js"></script>
+    <script>
+        let page;
+        document.addEventListener("DOMContentLoaded", getThePage);
+
+        async function getThePage() {
+            let url = "http://mathaeusss.dk/kea/2_semester/ihs/wordpress/wp-json/wp/v2/pages/150";
+            let jsonData = await fetch(url);
+            page = await jsonData.json();
+
+
+            console.log(page);
+
+            document.querySelector("h1").textContent = page.title.rendered;
+            document.querySelector("#text_content").innerHTML = page.content.rendered;
+            //slettes senere
+            let billeder = document.querySelectorAll("img");
+            billeder.forEach(billede => {
+                billede.src = "imgs/placeholder.jpg";
+            });
+            //slettes snere
+        }
+    </script>
+</body></html>
