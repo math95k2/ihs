@@ -50,6 +50,11 @@ h3 {
     font-size: 1rem;
 }
 
+.dyn_spg {
+    font-size: 1.5rem;
+}
+
+
 li {
     font-family: 'Montserrat', sans-serif;
 }
@@ -287,6 +292,7 @@ section {
     word-break: break-all;
     line-height: 3.5rem;
 }
+
 
 
 
