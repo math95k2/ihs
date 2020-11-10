@@ -35,12 +35,14 @@ p {
 
 h1 {
     font-family: 'futura-pt-bold', sans-serif;
+    margin: 20px;
 }
 
 h2 {
     font-family: 'futura-pt-bold', sans-serif;
     color: var(--orange);
     font-size: 2rem;
+    margin-bottom: 10px;
 }
 
 
@@ -59,6 +61,9 @@ li {
     font-family: 'Montserrat', sans-serif;
 }
 
+#text_content {
+    margin: 20px;
+}
 
 
 
@@ -244,7 +249,24 @@ header {
     transform: rotate(-45deg);
 }
 
+/**********knapper***********/
 
+.button_flex {
+    display: flex;
+    justify-content: center;
+}
+
+.fag_knap {
+    background-color: var(--orange-light);
+    border: none;
+    color: white;
+    padding: 15px 30px;
+    text-align: center;
+    text-decoration: none;
+    font-size: 15px;
+    margin-bottom: 20px;
+    font-family: 'futura-pt-bold', sans-serif;
+}
 
 
 
@@ -400,19 +422,60 @@ section {
 }
 
 
+/*
 #broedkrumme a {
     font-family: 'Montserrat', sans-serif;
     color: black;
     text-decoration: none;
 
 }
+*/
+
+#broedkrumme {
+    margin-top: 10px;
+    margin-left: 10px;
+    list-style: none;
+    position: absolute;
+}
 
 
 
-/******** Fooooter *****/
+#broedkrumme li {
+    display: inline;
+    font-size: 14px;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: bold;
+
+}
+
+
+#broedkrumme li + li:before {
+    padding: 8px;
+    content: "/\00a0";
+    font-size: 14px;
+    font-weight: normal;
+}
+
+
+#broedkrumme li a {
+    color: black;
+    text-decoration: none;
+    font-size: 14px;
+    font-weight: normal;
+}
+
+
+#broedkrumme li a:hover {
+    color: black;
+    text-decoration: underline;
+
+}
+
+/******** Footer *****/
 
 #footer {
-
+    left: 0;
+    bottom: 0;
     width: 100%;
     background-color: var(--orange);
     color: #ffffff;
@@ -420,9 +483,9 @@ section {
 
 .colwrapper {
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
 }
 
-.colwrapper div {
-    padding: 15px 10px;
+.colwrapper > div {
+    padding: 20px;
 }
