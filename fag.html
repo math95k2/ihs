@@ -23,7 +23,7 @@
 
         <section>
             <div class="section_wrapper">
-                <img src="" alt="">
+                <img src="" alt="" id="page_billede">
                 <div id=text_content></div>
             </div>
         </section>
@@ -83,6 +83,9 @@
             document.querySelector("h1").textContent = page.title.rendered;
             document.querySelector("#text_content").innerHTML = page.content.rendered;
             document.querySelector("#top_billede").style.backgroundImage = "url(" + page.top_billede.guid + ")";
+            document.querySelector("#page_billede").src = page.billede.guid;
+
+
             hentDynKategorier();
 
 
@@ -113,15 +116,6 @@
                 let klon = temp.cloneNode(true).content;
                 klon.querySelector(".kategori_tekst").textContent = kategori.name;
                 klon.querySelector(".dyn_btn").dataset.id = kategori.id;
-
-
-
-                //slettes senere
-                let billeder = document.querySelectorAll("img");
-                billeder.forEach(billede => {
-                    billede.src = "imgs/placeholder.jpg";
-                });
-                //slettes snere
 
                 container.appendChild(klon);
             })
@@ -156,20 +150,15 @@
                         let klon = temp.cloneNode(true).content;
                         klon.querySelector(".indhold_navn").textContent = pod.overskrift;
                         klon.querySelector(".indhold_periode").textContent = pod.periode;
+                        klon.querySelector(".indhold_billede").src = pod.billede.guid;
+
+                        console.log(pod.billede);
 
 
                         klon.querySelector(".indhold_container").addEventListener("click", function() {
                             singleViewClick(pod.id)
                         });
 
-
-
-                        //slettes senere
-                        let billeder = document.querySelectorAll("img");
-                        billeder.forEach(billede => {
-                            billede.src = "imgs/placeholder.jpg";
-                        });
-                        //slettes snere
 
                         container.appendChild(klon);
                     }
@@ -201,10 +190,7 @@
             console.log("yes")
             this.lastElementChild.classList.toggle("pil_rotate");
         }
-
     </script>
 
 
-</body>
-
-</html>
+</body></html>
