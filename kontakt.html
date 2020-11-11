@@ -43,7 +43,52 @@
                 </p>
             </article>
         </template>
+
+        <section id="kontakt_os_formular">
+
+            <!-- Beskrivelse af send formularen er lavet -->
+            <h2>Kontakt os</h2>
+
+            <div class=" container formular_width">
+
+                <!-- Her ville man indsætte det sted, som informationen skulle sendes hen. Vi har efterladt strengen tom, fordi vi kun har behov for en "dummy" formular -->
+                <form action="">
+
+                    <!-- Her skriver personen deres fornavn  -->
+                    <div class="row">
+
+                        <div class="col-75">
+                            <input type="text" id="fname" name="firstname" placeholder="Fornavn">
+                        </div>
+                    </div>
+
+                    <!-- Her skriver personen deres efternavn -->
+                    <div class="row">
+                        <div class="col-75">
+                            <input type="text" id="lname" name="lastname" placeholder="Efternavn">
+                        </div>
+                    </div>
+
+
+
+
+                    <!-- Her kan personen skrive en besked til skolen -->
+                    <div class="row">
+                        <div class="col-75">
+                            <textarea id="subject" name="subject" placeholder="Skriv din besked her" style="height:200px"></textarea>
+                        </div>
+                    </div>
+
+                    <!-- send knappen -->
+                    <div class="row">
+                        <input type="submit" value="Send">
+                    </div>
+                </form>
+            </div>
+        </section>
     </main>
+
+
 
     <footer></footer>
 
@@ -68,8 +113,10 @@
                 billede.src = "imgs/placeholder.jpg";
             });
             //slettes snere
-
             hentDynContent();
         };
+
     </script>
-</body></html>
+</body>
+
+</html>

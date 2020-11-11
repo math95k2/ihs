@@ -261,7 +261,7 @@ header {
     justify-content: center;
 }
 
-.fag_knap {
+.knap {
     background-color: var(--orange-light);
     border: none;
     color: white;
@@ -532,4 +532,67 @@ section {
 
 .col_1 {
     flex-grow: 1;
+}
+
+/** falske links på om**/
+
+.om_afsnit {
+    margin: 30px;
+}
+
+.falsk_link {
+    color: blue;
+    text-decoration: underline;
+    cursor: pointer;
+}
+
+/* kontalt os  sektion, styling af formularen */
+
+/* Her styler vi de forskellige inputfelter så det får et ensartet udtryk i størrelse og border */
+input[type=text],
+textarea {
+    width: 100%;
+    padding: 12px;
+    margin: 10px 0;
+    border: none;
+    /* resize er den måde man kan forstørre tekst boksne i */
+    resize: vertical;
+}
+
+
+/* Her styler vi de forskellige inputfelter så det får et ensartet udtryk i skrifttype, skriftstørrelse, farve og fonttykkelse */
+.container ::placeholder,
+#fname,
+#lname,
+#subject {
+    color: black;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 500;
+    font-size: 1rem;
+}
+
+/* Her styler vi send-cta-knappen. Vi styler størrelse, teksten, padding og border */
+input[type=submit] {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 600;
+    font-size: 1.2rem;
+    padding: 25px 0px;
+    margin-top: 20px;
+    margin-bottom: 10px;
+    border: 0;
+    background: var(--orange-light);
+    color: white;
+
+    cursor: pointer;
+    width: 100%;
+
+}
+
+/* Her styler vi den omkring-liggende container til formularen, der gør, at kunden har et indtryk af, at alle inputfelterne hænger sammen */
+.formular_width {
+    padding: 20px;
+
+    margin-top: 25px;
+    margin-bottom: 10px;
+    background: var(--grey);
 }
