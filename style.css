@@ -19,7 +19,9 @@ img {
 }
 
 
-
+main {
+    max-width: 1200px;
+}
 
 
 
@@ -596,3 +598,17 @@ input[type=submit] {
     margin-bottom: 10px;
     background: var(--grey);
 }
+
+/*********Media Q*********/
+
+@media only screen and (min-width: 768px) {
+    .menu_btn {
+        display: none;
+    }
+
+    .menu_btn_burger {
+        display: none;
+
+    }
+
+    @media only screen and (min-width: 1000px) {}
