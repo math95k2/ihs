@@ -342,11 +342,15 @@ section {
 .main_container {
     position: relative;
     overflow: hidden;
-    height: auto;
+
 
     /***** samme højde som .fag_box***/
-    height: 25vw;
+    height: 105px;
+    ;
 }
+
+
+
 
 .main_container:nth-child(odd) {
     background: var(--orange-light);
@@ -369,7 +373,8 @@ section {
     font-size: 2rem;
 }
 
-.dyn_btn {
+.dyn_btn,
+.dyn_btn_2 {
     width: 100%;
     height: 105px;
     display: flex;
@@ -378,6 +383,13 @@ section {
     padding: 0 10px;
 }
 
+.dyn_btn_2 {
+    background: var(--orange-light);
+}
+
+.main_container_2 {
+    background: var(--orange-light);
+}
 
 .dyn_btn:hover {
     cursor: pointer;

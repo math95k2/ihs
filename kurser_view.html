@@ -20,7 +20,7 @@
             <div class="sectionwrapper">
                 <div id="broedkrumme">
                     <ul>
-                        <li><a href="fag.html">Fag</a></li>
+                        <li><a href="kurser.html">Kurser</a></li>
                         <li><a href="#" class="broedkrumme_valgt"></a></li>
                     </ul>
                 </div>
@@ -57,7 +57,7 @@
         async function getThePage() {
 
 
-            let url = "http://mathaeusss.dk/kea/2_semester/ihs/wordpress/wp-json/wp/v2/fag/" + id;
+            let url = "http://mathaeusss.dk/kea/2_semester/ihs/wordpress/wp-json/wp/v2/kurser/" + id;
             let jsonData = await fetch(url);
             page = await jsonData.json();
 
@@ -66,7 +66,9 @@
 
             document.querySelector("h1").textContent = page.title.rendered;
             document.querySelector("#text_content").innerHTML = page.content.rendered;
+
             document.querySelector(".broedkrumme_valgt").textContent = page.title.rendered;
+
 
 
 

@@ -40,16 +40,28 @@
 
 
         <section>
-            <div id="dyn_content"></div>
+            <article class="main_container_2">
+                <div class="dyn_btn_2">
+                    <h2 class="kategori_tekst_2"> </h2>
+                </div>
+                <div id="dyn_content"></div>
+            </article>
         </section>
 
-        <template>
-            <article>
-                <img src="" alt="" class="dyn_img">
-                <p class="dyn_text">
-                </p>
-            </article>
+        <template id="temp_indhold">
+
+            <div class="indhold_container">
+                <img src="" alt="" class="indhold_billede">
+                <div class="indhold_tekst_container">
+                    <h3 class="indhold_navn"></h3>
+                    <p class="indhold_info"></p>
+                </div>
+            </div>
+
+
         </template>
+
+
     </main>
 
 
@@ -97,21 +109,32 @@
 
         //Udvalgs-view fra Pods
         async function hentDynContent() {
-            let kurser;
+            let pods;
             let url = "http://mathaeusss.dk/kea/2_semester/ihs/wordpress/wp-json/wp/v2/kurser";
             let container = document.querySelector("#dyn_content");
-            const temp = document.querySelector("template");
+            const temp = document.querySelector("#temp_indhold");
 
             let jsonData = await fetch(url);
-            kurser = await jsonData.json();
+            pods = await jsonData.json();
 
-            kurser.forEach(kurse => {
+            pods.forEach(pod => {
                 let klon = temp.cloneNode(true).content;
-                klon.querySelector(".dyn_text").textContent = kurse.title.rendered;
+                klon.querySelector(".indhold_navn").textContent = pod.title.rendered;
 
-                //klon.querySelector("article").addEventListener("click", () => visDetaljer(titel));
+                klon.querySelector(".indhold_container").addEventListener("click", function() {
+                    singleViewClick(pod.id)
+                }); //klon.querySelector("article").addEventListener("click", () => visDetaljer(titel));
                 container.appendChild(klon);
             })
         };
+
+
+
+
+
+
+        function singleViewClick(id) {
+            window.location.href = "kurser_view.html?id=" + id;
+        }
     </script>
 </body></html>
