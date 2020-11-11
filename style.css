@@ -367,7 +367,6 @@ section {
 }
 
 .main_container:nth-child(odd) h2 {
-    font-family: 'Montserrat', sans-serif;
     color: white;
     font-size: 2rem;
 }
@@ -378,7 +377,6 @@ section {
 }
 
 .main_container:nth-child(even) h2 {
-    font-family: 'Montserrat', sans-serif;
     color: var(--orange);
     font-size: 2rem;
 }
