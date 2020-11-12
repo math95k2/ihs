@@ -564,10 +564,13 @@ section {
     background-color: var(--orange);
     color: #ffffff;
     font-size: 10px;
+<<<<<<< HEAD
     display: flex;
     justify-content: space-around;
 
 
+=======
+>>>>>>> origin/master
 
 }
 
@@ -591,6 +594,7 @@ section {
     display: flex;
     flex-wrap: wrap;
     padding: 1px;
+
 }
 
 .col_3 {
@@ -605,6 +609,7 @@ section {
 
 .col_1 {
     flex-grow: 1;
+
 }
 
 .ikoner {
@@ -676,19 +681,64 @@ input[type=submit] {
     background: var(--grey);
 }
 
+
+
+
+
+/***ig moments***/
+
+.ig_moments {
+    color: white;
+    background: var(--orange-light);
+    padding-bottom: 300px;
+    padding-top: 10px;
+    margin-bottom: 20px;
+}
+
 /*********Media Q*********/
 
 @media only screen and (min-width: 750px) {
-    /*
-    .menu_btn {
-        display: none;
+
+
+    .section_wrapper {
+        display: grid;
+        grid-gap: 15px;
+        grid-template-columns: repeat(auto-fill, minmax(500px, 1fr));
+        padding: 30px 15px 30px 15px;
     }
 
-    .menu_btn_burger {
-        display: none;
 
+    .dyn_indhold_container {
+        display: grid;
+        grid-gap: 15px;
+        grid-template-columns: repeat(auto-fill, minmax(380px, 1fr));
+        padding: 0 15px 30px 15px;
     }
-*/
+
+
+    .forside_wrapper {
+        display: grid;
+        grid-gap: 15px;
+        grid-template-columns: repeat(auto-fill, minmax(500px, 1fr));
+        padding: 30px 15px 30px 15px;
+    }
+
+    #footer {
+        left: 0;
+        bottom: 0;
+        width: 100%;
+        background-color: var(--orange);
+        color: #ffffff;
+        font-size: 20px;
+        ;
+    }
+
+
+
+
+
+
+
 
 
     .fold_ud_knap {
@@ -699,8 +749,11 @@ input[type=submit] {
         height: auto;
     }
 
-
-
 }
+
+
+
+
+
 
 @media only screen and (min-width: 1000px) {}
