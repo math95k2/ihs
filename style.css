@@ -730,12 +730,12 @@ input[type=submit] {
     }
 
 
+    .colwrapper {
+        display: flex;
+        flex-direction: row;
+        flex-basis: 500px;
 
-
-
-
-
-
+    }
 
     .fold_ud_knap {
         opacity: 0;
