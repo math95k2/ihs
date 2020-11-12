@@ -27,7 +27,7 @@
 
 
         <section>
-            <div class="section_wrapper">
+            <div class="section_wrapper max_width">
                 <img src="" alt="">
                 <div id="text_content">
 
@@ -38,10 +38,10 @@
 
         <section>
             <article class="main_container_2">
-                <div class="dyn_btn_2">
+                <div class="dyn_btn_2 max_width">
                     <h2 class="kategori_tekst_2"> </h2>
                 </div>
-                <div class="dyn_indhold_container"></div>
+                <div class="dyn_indhold_container max_width"></div>
             </article>
         </section>
         <template id="temp_indhold">
@@ -112,14 +112,25 @@
                 }); //klon.querySelector("article").addEventListener("click", () => visDetaljer(titel));
                 container.appendChild(klon);
             })
+
+            lazyLoading();
         };
 
-        //slettes senere
-        let billeder = document.querySelectorAll("img");
-        billeder.forEach(billede => {
-            billede.src = "imgs/placeholder.jpg";
-        });
-        //slettes snere
+
+
+        function lazyLoading() {
+            const features = document.querySelectorAll(".indhold_container");
+            const observer = new IntersectionObserver(sections => {
+                sections.forEach(section => {
+                    if (section.intersectionRatio > 0.1) {
+                        section.target.classList.add('indhold_loaded');
+                    }
+                });
+            }, {
+                threshold: 0.1
+            });
+            features.forEach(feature => observer.observe(feature));
+        };
 
 
         function singleViewClick(id) {

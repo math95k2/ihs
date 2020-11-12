@@ -26,7 +26,7 @@
         </section>
 
         <section>
-            <div class="section_wrapper">
+            <div class="section_wrapper max_width">
                 <img src="" alt="">
                 <div id=text_content></div>
             </div>
@@ -44,11 +44,11 @@
 
         <template id="temp_kategori">
             <article class="main_container">
-                <div class="dyn_btn">
+                <div class="dyn_btn max_width">
                     <h2 class="kategori_tekst"></h2>
                     <div class="fold_ud_knap"></div>
                 </div>
-                <div class="dyn_indhold_container"></div>
+                <div class="dyn_indhold_container max_width"></div>
             </article>
         </template>
 
@@ -180,8 +180,26 @@
 
             })
 
+            lazyLoading();
+
             boxClicked();
         };
+
+
+
+        function lazyLoading() {
+            const features = document.querySelectorAll(".indhold_container");
+            const observer = new IntersectionObserver(sections => {
+                sections.forEach(section => {
+                    if (section.intersectionRatio > 0.1) {
+                        section.target.classList.add('indhold_loaded');
+                    }
+                });
+            }, {
+                threshold: 0.1
+            });
+            features.forEach(feature => observer.observe(feature));
+        }
 
 
 
