@@ -724,20 +724,28 @@ input[type=submit] {
         font-size: 20px;
         ;
     }
+
+
+
+
+
+
+
+
+
+    .fold_ud_knap {
+        opacity: 0;
+    }
+
+    .main_container {
+        height: auto;
+    }
+
 }
 
 
 
-.fold_ud_knap {
-    opacity: 0;
-}
-
-.main_container {
-    height: auto;
-}
 
 
-
-}
 
 @media only screen and (min-width: 1000px) {}
