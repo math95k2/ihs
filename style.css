@@ -724,8 +724,9 @@ input[type=submit] {
         width: 100%;
         background-color: var(--orange);
         color: #ffffff;
-        font-size: 20px;
-        ;
+        font-size: 15px;
+        display: flex;
+        justify-content: space-around;
     }
 
 
