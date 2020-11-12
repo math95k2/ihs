@@ -289,6 +289,21 @@ header {
     font-family: 'futura-pt-bold', sans-serif;
 }
 
+.kontakt_knap a {
+    background-color: var(--orange-light);
+    border: none;
+    color: white;
+    text-align: center;
+    text-decoration: none;
+    font-size: 15px;
+    font-family: 'futura-pt-bold', sans-serif;
+    padding: 15px;
+}
+
+.kontakt_knap {
+    padding: 40px;
+}
+
 
 
 
@@ -304,10 +319,16 @@ section {
 .section_wrapper {
     display: grid;
     grid-gap: 15px;
-    grid-template-columns: repeat(auto-fill, minmax(400px, 1fr));
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
     padding: 30px 15px 30px 15px;
 }
 
+.forside_wrapper {
+    display: grid;
+    grid-gap: 15px;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    padding: 30px 15px 30px 15px;
+}
 
 
 
@@ -414,6 +435,11 @@ section {
     background: var(--orange-light);
 }
 
+.kategori_tekst_2 {
+    margin: 0;
+    color: white;
+}
+
 .dyn_btn:hover {
     cursor: pointer;
 }
@@ -466,7 +492,7 @@ section {
 .dyn_indhold_container {
     display: grid;
     grid-gap: 15px;
-    grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
     padding: 0 15px 30px 15px;
 }
 
@@ -575,6 +601,12 @@ section {
     flex-grow: 1;
 }
 
+.ikoner {
+    display: flex;
+    flex-direction: row;
+
+}
+
 /** falske links på om**/
 
 .om_afsnit {
@@ -641,6 +673,7 @@ input[type=submit] {
 /*********Media Q*********/
 
 @media only screen and (min-width: 750px) {
+    /*
     .menu_btn {
         display: none;
     }
@@ -649,6 +682,7 @@ input[type=submit] {
         display: none;
 
     }
+*/
 
 
     .fold_ud_knap {

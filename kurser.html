@@ -16,11 +16,6 @@
     <header>
     </header>
 
-
-
-
-
-
     <main>
         <section id="top_section">
             <div id="top_billede">
@@ -32,9 +27,11 @@
 
 
         <section>
-            <img src="" alt="">
-            <div id="text_content">
+            <div class="section_wrapper">
+                <img src="" alt="">
+                <div id="text_content">
 
+                </div>
             </div>
         </section>
 
@@ -44,7 +41,7 @@
                 <div class="dyn_btn_2">
                     <h2 class="kategori_tekst_2"> </h2>
                 </div>
-                <div id="dyn_content"></div>
+                <div class="dyn_indhold_container"></div>
             </article>
         </section>
 
@@ -67,11 +64,6 @@
 
     <footer></footer>
 
-
-
-
-
-
     <script src="script.js"></script>
     <script>
         let page;
@@ -86,32 +78,24 @@
             console.log(page);
 
             document.querySelector("h1").textContent = page.title.rendered;
+            document.querySelector(".kategori_tekst_2").textContent = page.title.rendered;
             document.querySelector("#text_content").innerHTML = page.content.rendered;
 
+            /*****Lortet fjerner billederne i kurser*****/
+            //            document.querySelector("#top_billede").style.backgroundImage = "url(" + page.top_billede.guid + ")";
+            //            document.querySelector("#page_billede").src = page.billede.guid;
 
-            //slettes senere
-            let billeder = document.querySelectorAll("img");
-            billeder.forEach(billede => {
-                billede.src = "imgs/placeholder.jpg";
-            });
-            //slettes snere
 
 
 
             hentDynContent();
         };
 
-
-
-
-
-
-
         //Udvalgs-view fra Pods
         async function hentDynContent() {
             let pods;
             let url = "http://mathaeusss.dk/kea/2_semester/ihs/wordpress/wp-json/wp/v2/kurser";
-            let container = document.querySelector("#dyn_content");
+            let container = document.querySelector(".dyn_indhold_container");
             const temp = document.querySelector("#temp_indhold");
 
             let jsonData = await fetch(url);
@@ -120,6 +104,7 @@
             pods.forEach(pod => {
                 let klon = temp.cloneNode(true).content;
                 klon.querySelector(".indhold_navn").textContent = pod.title.rendered;
+                klon.querySelector(".indhold_billede").src = pod.billede.guid;
 
                 klon.querySelector(".indhold_container").addEventListener("click", function() {
                     singleViewClick(pod.id)
@@ -128,9 +113,12 @@
             })
         };
 
-
-
-
+        //slettes senere
+        let billeder = document.querySelectorAll("img");
+        billeder.forEach(billede => {
+            billede.src = "imgs/placeholder.jpg";
+        });
+        //slettes snere
 
 
         function singleViewClick(id) {
