@@ -733,7 +733,7 @@ input[type=submit] {
     .colwrapper {
         display: flex;
         flex-direction: row;
-        flex-basis: 500px;
+        flex-basis: 700px;
 
     }
 
