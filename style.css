@@ -564,11 +564,17 @@ section {
     background-color: var(--orange);
     color: #ffffff;
     font-size: 10px;
+    display: flex;
+    justify-content: space-around;
+
+
+
 }
 
 .colwrapper {
     display: flex;
     flex-direction: row;
+    flex-basis: 500px;
 
 }
 
