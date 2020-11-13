@@ -84,9 +84,11 @@ function stickyMenu() {
     if (window.pageYOffset > 110) {
         mainMenu.classList.add("menu_shrink");
         headerLogo.classList.add("logo_shrink");
+        document.querySelector("#header_menu").classList.add("header_menu_scrolled");
     } else {
         mainMenu.classList.remove("menu_shrink");
         headerLogo.classList.remove("logo_shrink");
+        document.querySelector("#header_menu").classList.remove("header_menu_scrolled");
     };
 
 }
