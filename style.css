@@ -381,11 +381,15 @@ section {
 }
 
 .forside_wrapper {
-    display: grid;
-    grid-gap: 15px;
-    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-    padding: 60px 15px 60px 15px;
+    display: flex;
+    justify-content: center;
+    padding: 60px 15px;
 }
+
+.forside_wrapper #text_content {
+    max-width: 550px;
+}
+
 
 #forside_video {
     position: fixed;
@@ -652,6 +656,11 @@ section {
 
 
 
+
+
+
+
+
 /*** hvad siger eleverne ***/
 
 
@@ -669,7 +678,7 @@ section {
 .citater_container {
     display: grid;
     grid-gap: 15px;
-    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
     padding: 0 15px 75px 15px;
 
 
@@ -690,7 +699,7 @@ section {
 .CTAs_container {
     display: grid;
     grid-gap: 15px;
-    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
     padding: 75px 15px 75px 15px;
 
 }
@@ -730,6 +739,46 @@ section {
     justify-content: space-between;
     align-items: center;
 }
+
+
+
+
+
+
+/****** IHS MOMENTS *****/
+
+.ig_moments {
+    background: var(--orange-light);
+}
+
+.ig_moments h2 {
+    color: white;
+    margin: 0;
+}
+
+#ig_grid_container {
+    display: grid;
+    grid-gap: 15px;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    padding: 0 15px 75px 15px;
+}
+
+.ig_img_padding {
+    overflow: hidden;
+}
+
+#ig_grid_container img {
+    transform: scale(1.1);
+    transition: all .3s ease-in-out;
+}
+
+#ig_grid_container img:hover {
+    cursor: pointer;
+    transform: scale(1.15);
+}
+
+
+
 
 
 /*
@@ -795,24 +844,23 @@ section {
     width: 100%;
     background-color: var(--orange);
     color: #ffffff;
-    font-size: 10px;
-    display: flex;
-    justify-content: space-around;
-
-    padding: 30px 0 40px 0;
-
+    font-size: 1rem;
+    padding: 40px 15px 40px 15px;
 }
 
 .colwrapper {
-    display: flex;
-    flex-direction: row;
-    flex-basis: 500px;
+    display: grid;
+    grid-gap: 30px 15px;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    padding: 0 15px;
 
 }
 
+/*
 .colwrapper > div {
     padding: 10px;
 }
+*/
 
 .footer_h {
     font-weight: bold;
@@ -823,30 +871,20 @@ section {
     display: flex;
     flex-wrap: wrap;
     padding: 1px;
-    width: 3vw;
+    width: 40px;
 
 }
 
 
-.col_3 {
-    display: flex;
-    flex-direction: column;
-    flex-grow: 1;
-}
 
-.col_2 {
-    flex-grow: 1;
-}
-
-.col_1 {
-    flex-grow: 1;
-
-}
 
 .ikoner {
     display: flex;
     flex-direction: row;
+}
 
+.ikoner img {
+    margin-right: 5px;
 }
 
 /** falske links på om**/
@@ -916,15 +954,6 @@ input[type=submit] {
 
 
 
-/***ig moments***/
-
-.ig_moments {
-    color: white;
-    background: var(--orange-light);
-    padding-bottom: 300px;
-    padding-top: 10px;
-}
-
 /*********Media Q*********/
 
 
@@ -934,9 +963,19 @@ input[type=submit] {
         grid-template-columns: repeat(auto-fill, minmax(450px, 1fr));
     }
 
-    .forside_wrapper {
-        grid-template-columns: repeat(auto-fill, minmax(450px, 1fr));
+
+    .citater_container {
+        grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
     }
+
+
+
+
+    .CTAs_container {
+        grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+
+    }
+
 
 }
 
@@ -957,10 +996,7 @@ input[type=submit] {
     }
 
 
-    .forside_wrapper {
-        grid-template-columns: repeat(auto-fill, minmax(500px, 1fr));
-    }
-
+    /*
     #footer {
         left: 0;
         bottom: 0;
@@ -971,14 +1007,23 @@ input[type=submit] {
         display: flex;
         justify-content: space-around;
     }
+*/
 
 
+    /*
     .colwrapper {
         display: flex;
         flex-direction: row;
         flex-basis: 700px;
 
     }
+*/
+
+
+
+
+
+
 
     .fold_ud_knap {
         opacity: 0;
