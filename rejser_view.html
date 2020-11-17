@@ -4,7 +4,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Kurse</title>
+    <title>Fag</title>
     <link rel="stylesheet" href="style.css">
 
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@200;300;400;500;600;700&display=swap" rel="stylesheet">
@@ -23,7 +23,7 @@
         <section>
             <div id="broedkrumme">
                 <ul>
-                    <li><a href="kurser.html">Kurser</a></li>
+                    <li><a href="rejser.html">Rejser</a></li>
                     <li><a href="#" class="broedkrumme_valgt"></a></li>
                 </ul>
             </div>
@@ -61,7 +61,7 @@
         async function getThePage() {
 
 
-            let url = "http://mathaeusss.dk/kea/2_semester/ihs/wordpress/wp-json/wp/v2/kurser/" + id;
+            let url = "http://mathaeusss.dk/kea/2_semester/ihs/wordpress/wp-json/wp/v2/rejser/" + id;
             let jsonData = await fetch(url);
             page = await jsonData.json();
 

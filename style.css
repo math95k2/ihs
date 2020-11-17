@@ -44,8 +44,9 @@ main section:nth-child(1) {
 
 
 body {
-    background-color: #f7f7f7;
+    background-color: white;
 }
+
 
 section {
     background-color: white;
@@ -402,6 +403,13 @@ section {
     grid-gap: 15px;
     grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
     padding: 60px 15px 60px 15px;
+}
+
+.section_wrapper_2 {
+    display: grid;
+    grid-gap: 15px;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    padding: 0 15px 0 15px;
 }
 
 .forside_wrapper {
@@ -815,10 +823,9 @@ section {
 */
 
 #broedkrumme {
-    margin-top: 10px;
-    margin-left: 10px;
+    padding: 15px;
     list-style: none;
-    position: absolute;
+    background: white;
 }
 
 
@@ -854,7 +861,27 @@ section {
 
 }
 
+
+
+
+
+
+/******** singleviews *****/
+
+#single_content h1 {
+    color: var(--orange-light);
+    font-size: 2rem;
+    margin: 0;
+}
+
+#single_content h2 {
+    color: var(--orange-light);
+    font-size: 1rem;
+    font-family: 'Montserrat', sans-serif;
+}
+
 /******** Footer *****/
+
 
 #footer_margin {
     padding: 50px 0 0px 0;
@@ -913,8 +940,9 @@ section {
 
 /** falske links på om**/
 
-.om_afsnit {
-    margin: 30px;
+.om_afsnit p {
+    margin: 0 15px;
+
 }
 
 .falsk_link {
@@ -987,6 +1015,10 @@ input[type=submit] {
         grid-template-columns: repeat(auto-fill, minmax(450px, 1fr));
     }
 
+    .section_wrapper_2 {
+        grid-template-columns: repeat(auto-fill, minmax(450px, 1fr));
+    }
+
 
     .citater_container {
         grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
@@ -1010,6 +1042,10 @@ input[type=submit] {
 
 
     .section_wrapper {
+        grid-template-columns: repeat(auto-fill, minmax(500px, 1fr));
+    }
+
+    .section_wrapper_2 {
         grid-template-columns: repeat(auto-fill, minmax(500px, 1fr));
     }
 

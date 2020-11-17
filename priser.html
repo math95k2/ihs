@@ -36,7 +36,7 @@
 
         <section>
             <div class="section_wrapper max_width">
-                <img src="" alt="">
+                <img src="" alt="" id="page_billede">
                 <div id="text_content">
                 </div>
 
@@ -62,20 +62,13 @@
             let jsonData = await fetch(url);
             page = await jsonData.json();
 
-
             console.log(page);
 
             document.querySelector("h1").textContent = page.title.rendered;
             document.querySelector("#text_content").innerHTML = page.content.rendered;
-            //slettes senere
-            let billeder = document.querySelectorAll("img");
-            billeder.forEach(billede => {
-                billede.src = "imgs/placeholder.jpg";
-            });
-            //slettes snere
-        }
+            document.querySelector("#page_billede").src = page.billede.guid;
 
+            document.querySelector("#top_billede").style.backgroundImage = "url(" + page.top_billede.guid + ")";
+        };
     </script>
-</body>
-
-</html>
+</body></html>

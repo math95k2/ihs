@@ -107,12 +107,7 @@
             document.querySelector("h1").textContent = page.title.rendered;
             document.querySelector("#text_content").innerHTML = page.content.rendered;
 
-            //slettes senere
-            let billeder = document.querySelectorAll("img");
-            billeder.forEach(billede => {
-                billede.src = "imgs/placeholder.jpg";
-            });
-            //slettes snere
+
             hentDynContent();
         };
     </script>

@@ -4,7 +4,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Faciliteter</title>
+    <title>Facilitet</title>
     <link rel="stylesheet" href="style.css">
 
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@200;300;400;500;600;700&display=swap" rel="stylesheet">
@@ -19,29 +19,27 @@
     </header>
 
 
-
-
-
-
     <main>
         <section>
-            <div class="sectionwrapper">
-                <div id="broedkrumme">
-                    <ul>
-                        <li><a href="faciliteter.html">Faciliteter</a></li>
-                        <li>Valgt</li>
-                    </ul>
-                </div>
+            <div id="broedkrumme">
+                <ul>
+                    <li><a href="faciliteter.html">Faciliteter</a></li>
+                    <li><a href="#" class="broedkrumme_valgt"></a></li>
+                </ul>
             </div>
         </section>
-        <section>
+        <section id="single_content" class="section_wrapper_2 max_width">
             <img src="" alt="">
-            <h1></h1>
-            <div id="text_content">
+            <div class="content">
+                <h1></h1>
+                <div id="text_content">
+                </div>
 
             </div>
         </section>
     </main>
+
+
 
 
     <footer></footer>
@@ -70,23 +68,10 @@
 
             console.log(page);
 
-
-            console.log(page);
-
             document.querySelector("h1").textContent = page.title.rendered;
             document.querySelector("#text_content").innerHTML = page.content.rendered;
-
-
-
-            //slettes senere
-            let billeder = document.querySelectorAll("img");
-            billeder.forEach(billede => {
-                billede.src = "imgs/placeholder.jpg";
-            })
-
-            //slettes senere
-
-
+            document.querySelector(".broedkrumme_valgt").textContent = page.title.rendered;
+            document.querySelector("img").src = page.billede.guid;
         };
     </script>
 </body></html>

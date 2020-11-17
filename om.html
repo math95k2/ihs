@@ -26,32 +26,23 @@
         </section>
 
         <section>
-            <img src="" alt="">
-            <div id="text_content">
+            <div class="section_wrapper max_width">
+                <img src="" alt="" id="page_billede">
+                <div id="text_content">
+                </div>
+            </div>
+            <div class="om_afsnit max_width">
+                <p> Du kan læse mere om skolens værdigrundlag <span class="falsk_link">
+                        her
+                    </span> </p>
 
+                <p> Er du interesseret i at læse mere om tidligere elevers ophold på IHS kan du se årsplaner<span class="falsk_link"> her</span> </p>
             </div>
         </section>
 
-        <section>
-            <div id="dyn_content"></div>
-        </section>
-
-        <template>
-            <article>
-                <img src="" alt="" class="dyn_img">
-                <p class="dyn_text">
-                </p>
-            </article>
-        </template>
-        <div class="om_afsnit">
-            <p> Du kan læse mere om skolens værdigrundlag <span class="falsk_link">
-                    her
-                </span> </p>
 
 
-            <p> Er du interesseret i at læse mere om tidligere elevers ophold på IHS kan du se årsplaner<span class="falsk_link"> her</span> </p>
 
-        </div>
     </main>
 
     <footer></footer>
@@ -70,15 +61,9 @@
 
             document.querySelector("h1").textContent = page.title.rendered;
             document.querySelector("#text_content").innerHTML = page.content.rendered;
+            document.querySelector("#page_billede").src = page.billede.guid;
 
-            //slettes senere
-            let billeder = document.querySelectorAll("img");
-            billeder.forEach(billede => {
-                billede.src = "imgs/placeholder.jpg";
-            });
-            //slettes snere
-
-            hentDynContent();
+            document.querySelector("#top_billede").style.backgroundImage = "url(" + page.top_billede.guid + ")";
         };
     </script>
 </body></html>
