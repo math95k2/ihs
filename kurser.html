@@ -28,9 +28,8 @@
 
         <section>
             <div class="section_wrapper max_width">
-                <img src="" alt="">
+                <img src="" alt="" id="page_billede">
                 <div id="text_content">
-
                 </div>
             </div>
         </section>
@@ -85,9 +84,8 @@
             document.querySelector(".kategori_tekst_2").textContent = page.title.rendered;
             document.querySelector("#text_content").innerHTML = page.content.rendered;
 
-            /*****Lortet fjerner billederne i kurser*****/
-            //            document.querySelector("#top_billede").style.backgroundImage = "url(" + page.top_billede.guid + ")";
-            //            document.querySelector("#page_billede").src = page.billede.guid;
+            document.querySelector("#top_billede").style.backgroundImage = "url(" + page.top_billede.guid + ")";
+            document.querySelector("#page_billede").src = page.billede.guid;
 
 
 
@@ -138,8 +136,5 @@
         function singleViewClick(id) {
             window.location.href = "kurser_view.html?id=" + id;
         }
-
     </script>
-</body>
-
-</html>
+</body></html>

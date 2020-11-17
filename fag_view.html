@@ -71,19 +71,10 @@
             document.querySelector("h1").textContent = page.title.rendered;
             document.querySelector("#text_content").innerHTML = page.content.rendered;
             document.querySelector(".broedkrumme_valgt").textContent = page.title.rendered;
-
-
-
-
-            //slettes senere
-            let billeder = document.querySelectorAll("img");
-            billeder.forEach(billede => {
-                billede.src = "imgs/placeholder.jpg";
-            })
-
-            //slettes senere
-
-
+            document.querySelector("img").src = page.billede.guid;
         };
+
     </script>
-</body></html>
+</body>
+
+</html>

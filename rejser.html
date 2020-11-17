@@ -7,19 +7,14 @@
     <title>Rejser</title>
     <link rel="stylesheet" href="style.css">
 
-    <link rel="stylesheet" href="https://use.typekit.net/vus6tar.css">
-
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@200;300;400;500;600;700&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="https://use.typekit.net/vus6tar.css">
 </head>
 
 <body>
     <header>
     </header>
-
-
-
-
-
 
     <main>
         <section id="top_section">
@@ -32,42 +27,48 @@
 
 
         <section>
-            <div class="section_wrapper">
-                <img src="" alt="">
+            <div class="section_wrapper max_width">
+                <img src="" alt="" id="page_billede">
                 <div id="text_content">
                 </div>
             </div>
         </section>
 
 
-
         <section>
-            <div id="dyn_content"></div>
-        </section>
-
-        <template>
-            <article>
-                <div class="section_wrapper">
-                    <img src="" alt="" class="dyn_img">
-                    <p class="dyn_text">
-                    </p>
+            <article class="main_container_2">
+                <div class="dyn_btn_2 max_width">
+                    <h2 class="kategori_tekst_2"> </h2>
                 </div>
+                <div class="dyn_indhold_container max_width"></div>
             </article>
+        </section>
+        <template id="temp_indhold">
+
+
+            <div class="indhold_container">
+                <div class="img_overflow">
+                    <img src="" alt="" class="indhold_billede">
+                </div>
+                <div class="indhold_tekst_container">
+                    <h3 class="indhold_navn"></h3>
+                    <p class="indhold_info"></p>
+                </div>
+            </div>
+
+
         </template>
+
+
+
+
     </main>
 
 
     <footer></footer>
 
-
-
-
-
-
     <script src="script.js"></script>
     <script>
-        //main content fra wp-pages
-
         let page;
         document.addEventListener("DOMContentLoaded", getThePage);
 
@@ -75,51 +76,65 @@
             let url = "http://mathaeusss.dk/kea/2_semester/ihs/wordpress/wp-json/wp/v2/pages/69";
             let jsonData = await fetch(url);
             page = await jsonData.json();
+
+
             console.log(page);
+
             document.querySelector("h1").textContent = page.title.rendered;
+            document.querySelector(".kategori_tekst_2").textContent = page.title.rendered;
             document.querySelector("#text_content").innerHTML = page.content.rendered;
 
-            //slettes senere
-            let billeder = document.querySelectorAll("img");
-            billeder.forEach(billede => {
-                billede.src = "imgs/placeholder.jpg";
-            });
-            //slettes snere
+            document.querySelector("#top_billede").style.backgroundImage = "url(" + page.top_billede.guid + ")";
+            document.querySelector("#page_billede").src = page.billede.guid;
+
 
 
             hentDynContent();
         };
 
-
-
         //Udvalgs-view fra Pods
         async function hentDynContent() {
-            let rejser;
+            let pods;
             let url = "http://mathaeusss.dk/kea/2_semester/ihs/wordpress/wp-json/wp/v2/rejser";
-            let container = document.querySelector("#dyn_content");
-            const temp = document.querySelector("template");
+            let container = document.querySelector(".dyn_indhold_container");
+            const temp = document.querySelector("#temp_indhold");
 
             let jsonData = await fetch(url);
-            rejser = await jsonData.json();
+            pods = await jsonData.json();
 
-            rejser.forEach(rejse => {
+            pods.forEach(pod => {
                 let klon = temp.cloneNode(true).content;
-                klon.querySelector(".dyn_text").textContent = rejse.title.rendered;
+                klon.querySelector(".indhold_navn").textContent = pod.title.rendered;
+                klon.querySelector(".indhold_billede").src = pod.billede.guid;
 
-
-
-                //slettes senere
-                let billeder = document.querySelectorAll("img");
-                billeder.forEach(billede => {
-                    billede.src = "imgs/placeholder.jpg";
-                });
-                //slettes snere
-
-
-
-                //klon.querySelector("article").addEventListener("click", () => visDetaljer(titel));
+                klon.querySelector(".indhold_container").addEventListener("click", function() {
+                    singleViewClick(pod.id)
+                }); //klon.querySelector("article").addEventListener("click", () => visDetaljer(titel));
                 container.appendChild(klon);
             })
+
+            lazyLoading();
         };
+
+
+
+        function lazyLoading() {
+            const features = document.querySelectorAll(".indhold_container");
+            const observer = new IntersectionObserver(sections => {
+                sections.forEach(section => {
+                    if (section.intersectionRatio > 0.1) {
+                        section.target.classList.add('indhold_loaded');
+                    }
+                });
+            }, {
+                threshold: 0.1
+            });
+            features.forEach(feature => observer.observe(feature));
+        };
+
+
+        function singleViewClick(id) {
+            window.location.href = "rejser_view.html?id=" + id;
+        }
     </script>
 </body></html>
