@@ -87,7 +87,7 @@ h2 {
 
 h3 {
     font-family: 'Montserrat', sans-serif;
-    color: var(--orange);
+    color: var(--orange-light);
     font-size: 1rem;
 }
 
@@ -173,6 +173,7 @@ header {
     justify-content: left;
     align-items: left;
     z-index: 100;
+    padding-top: 15px;
     /*    margin-left: 40vw;*/
 }
 
@@ -186,7 +187,7 @@ header {
     text-decoration: none;
     color: black;
     padding: 10px;
-    color: var(--orange);
+    color: var(--orange-light);
     margin-left: 20px
 }
 
