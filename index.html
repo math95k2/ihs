@@ -20,34 +20,36 @@
     <header>
     </header>
 
-
-
-
     <main>
 
-        <section id="top_section">
-            <div id="top_billede">
-                <div id="top_overlay">
-                    <h1></h1>
+        <section id="forside_top_section">
+            <div id="forside_top_overlay">
+                <div id="video_logo">
+
                 </div>
+                <video autoplay muted loop id="forside_video">
+                    <source src="imgs/video.mp4" type="video/mp4">
+                </video>
             </div>
+
         </section>
 
         <section>
             <div class="forside_wrapper">
-                <img src="" alt="">
                 <div id="text_content">
                 </div>
             </div>
+            <!--
             <div class="button_flex">
                 <div class="kontakt_knap">
                     <a href="kontakt.html">Kontakt os</a>
                 </div>
             </div>
+-->
         </section>
         <section>
             <div class="ig_moments">
-                <h1> #IG Moments</h1>
+                <h1>#IHSmoments</h1>
 
             </div>
         </section>
@@ -78,12 +80,10 @@
 
             document.querySelector("h1").textContent = page.title.rendered;
             document.querySelector("#text_content").innerHTML = page.content.rendered;
-            //slettes senere
-            let billeder = document.querySelectorAll("img");
-            billeder.forEach(billede => {
-                billede.src = "imgs/placeholder.jpg";
-            });
-            //slettes snere
+
         }
+
     </script>
-</body></html>
+</body>
+
+</html>
