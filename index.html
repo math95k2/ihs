@@ -47,9 +47,92 @@
             </div>
 -->
         </section>
+        <section class="citat_section">
+            <div class="citat_container ">
+                <div class="dyn_btn_2 max_width">
+                    <h2>Hvad siger eleverne?</h2>
+                </div>
+
+                <div class="citater_container max_width">
+                    <div class=" citater">
+                        <div class="img_overflow">
+                            <img src="imgs/dreng.jpg" alt="" class="indhold_billede"></div>
+                        <div class="indhold_tekst_container">
+                            <q>IHS er et fantastisk sted, fyldt med muligheder og gode mennesker. Da jeg startede, troede jeg ikke, at mine højskole-kammerater, skulle ende med at blive mine bedste venner.</q>
+                        </div>
+                    </div>
+
+
+
+                    <div class="citater">
+                        <div class="img_overflow">
+                            <img src="imgs/pige_1.jpg" alt="" class="indhold_billede"></div>
+                        <div class="indhold_tekst_container">
+                            <q>IHS er et fantastisk sted, fyldt med muligheder og gode mennesker. Da jeg startede, troede jeg ikke, at mine højskole-kammerater, skulle ende med at blive mine bedste venner.</q>
+                        </div>
+                    </div>
+                    <div class="citater">
+                        <div class="img_overflow">
+                            <img src="imgs/pige_2.jpg" alt="" class="indhold_billede"></div>
+                        <div class="indhold_tekst_container">
+                            <q>IHS er et fantastisk sted, fyldt med muligheder og gode mennesker. Da jeg startede, troede jeg ikke, at mine højskole-kammerater, skulle ende med at blive mine bedste venner.</q>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </section>
+
+
+
+        <section class="CTA_section">
+            <div class="CTA_container">
+
+                <div class="CTAs_container max_width">
+                    <div class=" CTA link_fag">
+
+                        <p>På IHS har vi et stort udvalg af fag. Hva end du er typen der presser dig selv til grænsen, eller blot finder glæde ved at dyrke spot i samvær med andre, har vi sørget for, at der noget til dig.</p>
+                        <div class="links_flex">
+                            <h3>Se alle vores fag</h3>
+                            <div class="CTA_pil">
+
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="CTA link_rejser">
+
+                        <p>På IHS er vi glade for at besøge andre lande og få nye oplevelser sammen. Derfor er det muligt at vælge mellem flere destinationer i løbet af dit ophold.</p>
+                        <div class="links_flex">
+                            <h3>Se alle vores rejser</h3>
+                            <div class="CTA_pil">
+
+                            </div>
+                        </div>
+
+                    </div>
+                    <div class="CTA link_FAQ">
+
+                        <p>Det er en stor beslutning at tage valget om at starte på højskole. Derfor er det også naturligt, at have en masse spørgsmål. Vores FAQ har muligvis svarene på dine spørgsmål.</p>
+                        <div class="links_flex">
+                            <h3>Gå til FAQ</h3>
+                            <div class="CTA_pil">
+
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+        </section>
+
+
+
+
         <section>
             <div class="ig_moments">
-                <h1>#IHSmoments</h1>
+                <h2>#IHSmoments</h2>
 
             </div>
         </section>
@@ -58,10 +141,6 @@
 
 
     <footer></footer>
-
-
-
-
 
 
     <script src="script.js"></script>
@@ -80,12 +159,21 @@
 
             console.log(page);
 
-            document.querySelector("h1").textContent = page.title.rendered;
             document.querySelector("#text_content").innerHTML = page.content.rendered;
 
+
+            document.querySelector(".link_fag").addEventListener("click", function() {
+                window.location.href = "fag.html";
+            });
+            document.querySelector(".link_rejser").addEventListener("click", function() {
+                window.location.href = "rejser.html";
+            });
+            document.querySelector(".link_FAQ").addEventListener("click", function() {
+                window.location.href = "ofte_stillede_spoergsmaal.html";
+            });
+
+
+
         }
-
     </script>
-</body>
-
-</html>
+</body></html>

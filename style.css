@@ -103,9 +103,17 @@ li {
     /*    margin: 20px;*/
 }
 
+q {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 300;
+    font-style: italic;
 
 
-/****** HEader ************/
+}
+
+
+
+/****** Header ************/
 
 
 
@@ -624,6 +632,8 @@ section {
 
 .indhold_tekst_container {
     padding: 15px;
+    background-color: white;
+    border-radius: 0 0 3px 3px;
 }
 
 .indhold_tekst_container p {
@@ -642,13 +652,84 @@ section {
 
 
 
+/*** hvad siger eleverne ***/
+
+
+.citat_container {
+    background: var(--orange-light);
+    text-align: center;
+
+}
+
+.citat_container h2 {
+    color: white;
+    margin: 0;
+}
+
+.citater_container {
+    display: grid;
+    grid-gap: 15px;
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    padding: 0 15px 75px 15px;
+
+
+}
 
 
 
 
 
+/**** CTA på forsiden ****/
+
+.CTA_container {
+    background: var(--grey);
 
 
+}
+
+.CTAs_container {
+    display: grid;
+    grid-gap: 15px;
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    padding: 75px 15px 75px 15px;
+
+}
+
+.CTA {
+    padding: 15px;
+    background-color: white;
+    min-height: 180px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    cursor: pointer;
+
+
+}
+
+.CTA h3 {
+    color: var(--orange-light);
+    text-decoration: none;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: bold;
+    font-size: 1.5rem;
+}
+
+
+.CTA_pil {
+    background-image: url(imgs/pil_orange.svg);
+    height: 20px;
+    width: 20px;
+
+
+}
+
+
+.links_flex {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
 
 
 /*
@@ -703,7 +784,7 @@ section {
 /******** Footer *****/
 
 #footer_margin {
-    padding: 50px 0 20px 0;
+    padding: 50px 0 0px 0;
     background-color: white;
 
 }
