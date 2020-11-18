@@ -9,7 +9,10 @@ img {
     width: 100%;
 }
 
-
+.wp-block-image img {
+    width: 100%;
+    height: auto;
+}
 
 /*
 :root {
@@ -423,6 +426,14 @@ section {
     grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
     padding: 0 15px 0 15px;
 }
+
+.section_wrapper_3 {
+    display: grid;
+    grid-gap: 70px 15px;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    padding: 60px 15px 60px 15px;
+}
+
 
 .forside_wrapper {
     display: flex;
@@ -965,6 +976,10 @@ section {
 
 /* kontalt os  sektion, styling af formularen */
 
+#kontakt_os_formular {
+    padding-top: 60px;
+}
+
 /* Her styler vi de forskellige inputfelter så det får et ensartet udtryk i størrelse og border */
 input[type=text],
 textarea {
@@ -1031,6 +1046,10 @@ input[type=submit] {
         grid-template-columns: repeat(auto-fill, minmax(450px, 1fr));
     }
 
+    .section_wrapper_3 {
+        grid-template-columns: repeat(auto-fill, minmax(450px, 1fr));
+    }
+
 
     .citater_container {
         grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
@@ -1058,6 +1077,10 @@ input[type=submit] {
     }
 
     .section_wrapper_2 {
+        grid-template-columns: repeat(auto-fill, minmax(500px, 1fr));
+    }
+
+    .section_wrapper_3 {
         grid-template-columns: repeat(auto-fill, minmax(500px, 1fr));
     }
 

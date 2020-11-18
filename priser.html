@@ -35,9 +35,9 @@
 
 
         <section>
-            <div class="section_wrapper max_width">
-                <img src="" alt="" id="page_billede">
-                <div id="text_content">
+            <div class="max_width">
+                <!--                <img src="" alt="" id="page_billede">-->
+                <div id="text_content" class="section_wrapper_3">
                 </div>
 
             </div>
@@ -66,7 +66,6 @@
 
             document.querySelector("h1").textContent = page.title.rendered;
             document.querySelector("#text_content").innerHTML = page.content.rendered;
-            document.querySelector("#page_billede").src = page.billede.guid;
 
             document.querySelector("#top_billede").style.backgroundImage = "url(" + page.top_billede.guid + ")";
         };

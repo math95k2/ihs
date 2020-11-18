@@ -65,12 +65,7 @@
             document.querySelector("#text_content").innerHTML = page.content.rendered;
 
             document.querySelector("#top_billede").style.backgroundImage = "url(" + page.top_billede.guid + ")";
-            //slettes senere
-            let billeder = document.querySelectorAll("img");
-            billeder.forEach(billede => {
-                billede.src = "imgs/placeholder.jpg";
-            });
-            //slettes snere
+
         }
     </script>
 </body></html>
