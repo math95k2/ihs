@@ -65,9 +65,6 @@ async function getFooter() {
 
 
 
-
-
-
 function stickyMenu() {
     let header = document.querySelector("header");
     let mainMenu = document.querySelector("#main_menu");
@@ -80,15 +77,24 @@ function stickyMenu() {
     } else {
         header.classList.remove("sticky_menu");
     };
-
     if (window.pageYOffset > 110) {
         mainMenu.classList.add("menu_shrink");
         headerLogo.classList.add("logo_shrink");
         document.querySelector("#header_menu").classList.add("header_menu_scrolled");
+
+        document.querySelector("#kontakt_undermenu").classList.add("drop_shrink");
+
+        document.querySelector("#om_undermenu").classList.add("drop_shrink");
+
+
     } else {
         mainMenu.classList.remove("menu_shrink");
         headerLogo.classList.remove("logo_shrink");
         document.querySelector("#header_menu").classList.remove("header_menu_scrolled");
+
+        document.querySelector("#kontakt_undermenu").classList.remove("drop_shrink");
+
+        document.querySelector("#om_undermenu").classList.remove("drop_shrink");
     };
 
 }
