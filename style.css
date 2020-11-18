@@ -296,8 +296,9 @@ header {
 }
 
 
-
-
+.virker_ikke {
+    text-decoration: line-through !important;
+}
 
 
 
